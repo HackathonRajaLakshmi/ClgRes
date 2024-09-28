@@ -26,7 +26,7 @@ html, body {
 .user-top-bookings {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     height: 100%;
     margin-left: -60px;
     padding: 20px;
@@ -91,16 +91,6 @@ html, body {
     color: #FFD700;
 }
 
-.half-star::after {
-    content: '\2605';
-    color: #ccc;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 50%;
-    overflow: hidden;
-}
-
 .user-details {
     display: flex;
     flex-direction: column;
@@ -122,6 +112,10 @@ html, body {
     width: calc(275px * 3 + 50px);
     position: relative;
     scroll-behavior: smooth;
+    border: 0.5px solid #ece;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: -12px;
 }
 
 

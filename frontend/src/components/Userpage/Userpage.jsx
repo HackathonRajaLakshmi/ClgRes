@@ -79,6 +79,75 @@ const Userpage = () => {
             </>
         );
     };
+
+    useEffect(() => {
+        const card = document.querySelector('.user-search-card');
+        if (card) {
+            setCardWidth(card.offsetWidth);
+        }
+    }, []);
+    
+    useEffect(() => {
+        const handleResize = () => {
+            const card = document.querySelector('.user-search-card');
+            if (card) {
+                setCardWidth(card.offsetWidth);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    
+    const handleScrollRight = () => {
+        if (cardContainerRef.current) {
+            const visibleCards = 3.5;
+            const totalCards = facilityDetails.length;
+    
+            if (scrollPosition < (totalCards - visibleCards) * cardWidth) {
+                const newScrollPosition = scrollPosition + cardWidth * visibleCards; // Move by 3 cards
+                cardContainerRef.current.scrollBy({ left: cardWidth * visibleCards, behavior: 'smooth' });
+                setScrollPosition(newScrollPosition);
+    
+                if (newScrollPosition >= (totalCards - visibleCards) * cardWidth) {
+                    const rightArrow = document.querySelector('.nav-btn.right');
+                    if (rightArrow) {
+                        rightArrow.classList.add('disabled');
+                    }
+                }
+                
+                const leftArrow = document.querySelector('.nav-btn.left');
+                if (leftArrow) {
+                    leftArrow.classList.remove('disabled');
+                }
+            }
+        }
+    };
+    
+    const handleScrollLeft = () => {
+        if (cardContainerRef.current && scrollPosition > 0) {
+            const newScrollPosition = scrollPosition - cardWidth * 3.5;
+            cardContainerRef.current.scrollBy({ left: -cardWidth * 3.5, behavior: 'smooth' });
+            setScrollPosition(newScrollPosition);
+    
+            const leftArrow = document.querySelector('.nav-btn.left');
+            if (newScrollPosition <= 0 && leftArrow) {
+                leftArrow.classList.add('disabled');
+            }
+
+            const rightArrow = document.querySelector('.nav-btn.right');
+            if (rightArrow) {
+                rightArrow.classList.remove('disabled');
+            }
+        }
+    };
+    
+    useEffect(() => {
+        const leftArrow = document.querySelector('.nav-btn.left');
+        if (leftArrow) {
+            leftArrow.classList.toggle('disabled', scrollPosition <= 0);
+        }
+    }, [scrollPosition]);
+    
     
     return (
         <div className='user-container'>
@@ -106,7 +175,7 @@ const Userpage = () => {
                 </div>
 
                 <div className="user-details">
-                    <h2 style={{ textAlign: "center", marginTop: "-10px" }}>Book Facilities</h2>
+                    <h2 style={{ textAlign: "center", marginTop: "0px" }}>Book Facilities</h2>
                     <div className="nav-buttons">
                         <button 
                             className={`nav-btn-left ${scrollPosition <= 0 ? 'disabled' : ''}`} 
@@ -134,9 +203,11 @@ const Userpage = () => {
                                         <button>Book Facility</button>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
 
+
+                            ))}
+                            
+                        </div>
                         <button 
                             className={`nav-btn-right ${scrollPosition >= (facilityDetails.length - 3) * cardWidth ? 'disabled' : ''}`} 
                             onClick={handleScrollRight}
@@ -145,6 +216,7 @@ const Userpage = () => {
                         >
                             &gt;
                         </button>
+
                     </div>
                 </div>  
             </div>
