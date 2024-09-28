@@ -5,7 +5,6 @@ import ground from "../../assets/ground1.jpg";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../AuthContext';
 
-
 const Navbar = () => {
     const [showPopup, setShowPopup] = useState(false);
     const { isLoggedIn, setIsLoggedIn } = useAuth();
@@ -13,12 +12,8 @@ const Navbar = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token'); 
-        if (token) {
-            setIsLoggedIn(true);
-        } else {
-            setIsLoggedIn(false);
-        }
-    }, []);
+        setIsLoggedIn(!!token);
+    }, [setIsLoggedIn]);
 
     const handleProfileClick = () => {
         setShowPopup(true);
@@ -30,6 +25,7 @@ const Navbar = () => {
 
     const handleNavigate = () => {
         if (isLoggedIn) {
+            localStorage.removeItem('token');
             setIsLoggedIn(false); 
             navigate("/login");
         } else {
@@ -66,7 +62,7 @@ const Navbar = () => {
                         <span className="close-btn" onClick={handleClosePopup}>&times;</span>
                         <div className="user-popup-left">
                             <FaUserCircle size={40} color="#333" />
-                            <h3>{userEmail ? userEmail : 'Username'}</h3> {/* Show email or default username */}
+                            <h3>{userEmail ? userEmail : 'Username'}</h3> 
                         </div>
                         <div className="whole-bookings-card">
                             <h4 style={{textAlign:"center"}}>Your Bookings</h4>

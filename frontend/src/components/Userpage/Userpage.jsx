@@ -8,11 +8,14 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../../AuthContext';
 
 const Userpage = () => {
+
     const navigate = useNavigate();
     const [scrollPosition, setScrollPosition] = useState(0);
     const cardContainerRef = useRef(null);
+    const { isLoggedIn, setIsLoggedIn } = useAuth();
     const [cardWidth, setCardWidth] = useState(0); 
 
     const facilityDetails = [
@@ -216,10 +219,10 @@ const Userpage = () => {
                                     </div>
                                 </div>
 
-
                             ))}
                             
                         </div>
+                        
                         <button 
                             className={`nav-btn-right ${scrollPosition >= (facilityDetails.length - 3) * cardWidth ? 'disabled' : ''}`} 
                             onClick={handleScrollRight}
