@@ -9,6 +9,7 @@ const Navbar = () => {
     const [showPopup, setShowPopup] = useState(false);
     const { isLoggedIn, setIsLoggedIn } = useAuth();
     const navigate = useNavigate();
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('token'); 
@@ -21,6 +22,10 @@ const Navbar = () => {
 
     const handleClosePopup = () => {
         setShowPopup(false);
+    };
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(prevState => !prevState);
     };
 
     const handleNavigate = () => {
@@ -37,7 +42,7 @@ const Navbar = () => {
         <div>
             <div className="user-nav">
                 <div className="user-nav-left">
-                    <div className="title" style={{fontSize:"28px", marginTop:"-5px", color:"white"}}>
+                    <div className="title" style={{fontSize:"28px", marginTop:"-5px", color:"white"}} >
                         <i className="fas fa-user-shield"></i> RESX
                     </div>
                     <div className="user-search-container">
@@ -46,8 +51,17 @@ const Navbar = () => {
                 </div>
                 <div className="user-nav-right">
                     {isLoggedIn && (
-                        <div className="user-profile" onClick={handleProfileClick}>
-                            <FaUserCircle size={40} color="white" />
+                        <div className="user-profile">
+                            <FaUserCircle size={40} color="white" onClick={toggleDropdown}/>
+                            
+                            {isDropdownOpen && (
+                                <ul className="nav-profile-dropdown">
+                                <li onClick={() => { navigate('/cart'); setIsDropdownOpen(false); }}>
+                                <img src=""/> Orders
+                                </li>
+                                </ul>
+                               )}
+
                         </div>
                     )}
                     <button onClick={handleNavigate}>

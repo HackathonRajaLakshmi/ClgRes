@@ -12,4 +12,8 @@ router.get('/bookingpage', userAuth, (req, res) => {
     res.json({ message: "This is a protected route!" });
 });
 
+router.get('/cart', userAuth, (req, res) => {
+    res.json({ message: "This is a protected route!" });
+});
+
 module.exports = router;

@@ -70,6 +70,7 @@ const Userpage = () => {
     ];
 
     const handleBookFacility = () => {
+        console.log(isLoggedIn);
         if (isLoggedIn) {
             navigate("/bookingpage"); 
         } else {
@@ -190,7 +191,7 @@ const Userpage = () => {
                 </div>
 
                 <div className="user-details">
-                    <h2 style={{ textAlign: "center", marginTop: "0px" }} onClick={handleBookFacility}>Book Facilities</h2>
+                    <h2 style={{ textAlign: "center", marginTop: "0px" }}>Book Facilities</h2>
                     <div className="nav-buttons">
                         <button 
                             className={`nav-btn-left ${scrollPosition <= 0 ? 'disabled' : ''}`} 
@@ -215,7 +216,7 @@ const Userpage = () => {
                                             </div>
                                         </div>
                                         <p>Type: {facility.type}</p>
-                                        <button>Book Facility</button>
+                                        <button onClick={handleBookFacility}>Book Facility</button>
                                     </div>
                                 </div>
 
