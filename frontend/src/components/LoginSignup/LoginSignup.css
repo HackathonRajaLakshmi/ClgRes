@@ -1,0 +1,145 @@
+.simple-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  height: 75vh;
+  width: 60%;
+  background: #f9f9f9; /* Softer background color */
+  padding: 30px 20px; /* Added padding for better spacing */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px; /* More pronounced shadow */
+  border-radius: 15px; /* Rounded corners for a softer look */
+  overflow: hidden;
+  position: absolute;
+  top: 100px;
+  left: 50%; /* Centering the container horizontally */
+  transform: translateX(-50%); /* Adjust position to center it */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Adding a hover effect for subtle interactivity */
+.simple-container:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 15px 40px; /* Enhanced shadow on hover */
+  transform: translateX(-50%) scale(1.02); /* Slightly scale up on hover */
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column; /* Stack the title and container vertically */
+  align-items: center; /* Center align title */
+  margin-bottom: 20px; /* Space between title and container */
+}
+
+.title {
+  font-size: 36px; /* Adjust the size as needed */
+  color: #4c00b4; /* Title color, same as your header */
+  margin-top: 20px; /* Space below the title */
+}
+
+h1{
+  text-align: center;
+  color: #4c00b4;
+}
+
+.simple-image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%; /* Ensure it takes full height */
+}
+
+.simple-image-section img {
+  object-fit: cover; 
+
+  width: 100%;
+  height: 100%;
+}
+
+.simple-form-section {
+  padding: 40px;
+  background-color: white;
+
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 14px;
+  height: 86%; /* Make sure it fills the available height */
+}
+
+.simple-inputs {
+  display: flex;
+  flex-direction: column; /* Stack inputs vertically for login */
+  gap: 15px; /* Adjust space between inputs */
+  width: 100%;
+}
+
+.log-login-input {
+  display: flex;
+  flex-direction: column; /* Stack inputs vertically */
+  gap: 20px; /* Space between the inputs */
+  width: 400px; /* Ensure it takes full width */
+}
+
+.log-signup-input {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns for signup */
+  gap: 30px; /* Space between the inputs */
+}
+
+.simple-inputs input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #4c00b4;
+  outline: none;
+  width: 100%;
+}
+
+
+.simple-submit-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.simple-submit {
+  width: 48%;
+  padding: 10px;
+  background-color: #4c00b4;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.simple-submit:hover {
+  background-color: #3c009d;
+}
+
+.gray {
+  background: #eaeaea;
+  color: #676767;
+}
+
+.forgot-password {
+  text-align: center;
+  font-size: 14px;
+  color: #797979;
+  margin-top: 10px;
+}
+
+.forgot-password span {
+  color: #4c00b4;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

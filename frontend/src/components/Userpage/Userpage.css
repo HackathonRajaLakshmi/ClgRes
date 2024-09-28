@@ -1,4 +1,4 @@
-/* General Styles */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -11,7 +11,6 @@ html, body {
 .user-container {
     width: 100vw;
     height: 100vh;
-    background-color: #f9f9f9;
 }
 
 .user-main {
@@ -31,8 +30,10 @@ html, body {
     height: 100%;
     margin-left: -60px;
     padding: 20px;
-    background: #f5ebeb91;
-}
+    background: #f7FBFC;
+    margin-top: -10px;
+    /* border-right: 1px solid black; */
+    }
 
 .user-top-bookings h2 {
     margin-top: -10px;
@@ -105,21 +106,22 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding: 25px;
+    width: 80%;
+    padding:25px;
     height: 100%;
     color: #333;
-    background-color: #d4ecf7;
+    margin-left: -50px;
+    background-color:#f7FBFC;
+    margin-top: -20px;
 }
 
 .user-whole-card {
     display: flex;
     justify-content: space-between;
     gap:25px;
-    margin-left: -20px;
     overflow: hidden;
     overflow: hidden;
-    width: calc(280px * 3 + 40px);
+    width: calc(270px * 3 + 40px);
     position: relative;
     scroll-behavior: smooth;
 }
