@@ -168,7 +168,7 @@ const Userpage = () => {
                     <h2 style={{ textAlign: "center", marginTop: "-10px" }}>Book Facilities</h2>
                     <div className="nav-buttons">
                         <button 
-                            className={`nav-btn left ${scrollPosition <= 0 ? 'disabled' : ''}`} 
+                            className={`nav-btn-left ${scrollPosition <= 0 ? 'disabled' : ''}`} 
                             onClick={handleScrollLeft}
                             style={{ height: '40px', width: '40px', margin: "auto" }}
                             aria-label="Scroll left"
@@ -197,7 +197,7 @@ const Userpage = () => {
                         </div>
 
                         <button 
-                            className={`nav-btn right ${scrollPosition >= (facilityDetails.length - 3) * cardWidth ? 'disabled' : ''}`} 
+                            className={`nav-btn-right ${scrollPosition >= (facilityDetails.length - 3) * cardWidth ? 'disabled' : ''}`} 
                             onClick={handleScrollRight}
                             style={{ height: '40px', width: '40px', margin: "auto" }}
                             aria-label="Scroll right"
