@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify'; // Import ToastContainer and toast
-import 'react-toastify/dist/ReactToastify.css'; // Import the toast styles
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './LoginSignup.css';
 import loginimg from "../../assets/loginimg.jpeg";
+import axios from "axios";
 
 const LoginSignup = () => {
   const [action, setAction] = useState('Sign Up');
@@ -28,38 +29,38 @@ const LoginSignup = () => {
     e.preventDefault();
 
     try {
-      const url = action === 'Sign Up' ? '/api/register' : '/api/login';
-      const response = await fetch(url, {
-        method: 'POST',
+      const url = action === 'Sign Up' ? 'http://localhost:3000/api/register' : 'http://localhost:3000/api/login';
+
+      const requestBody = action === 'Sign Up' ? {
+        name: formData.name,
+        role: formData.role,
+        reg_no: formData.reg_no,
+        dept: formData.dept,
+        year: formData.year,
+        email: formData.email,
+        password: formData.password
+      } : {
+        email: formData.email,
+        password: formData.password
+      };
+
+      const response = await axios.post(url, requestBody, {
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(action === 'Sign Up' ? {
-          name: formData.name,
-          role: formData.role,
-          reg_no: formData.reg_no,
-          dept: formData.dept,
-          year: formData.year,
-          email: formData.email,
-          password: formData.password
-        } : {
-          email: formData.email,
-          password: formData.password
-        })
       });
 
-      const data = await response.json();
+      if (response.status === 201 || response.status === 200) {
+        toast.success(action === 'Sign Up' ? "Registration successful!" : "Successfully logged in!");
 
-      if (response.ok) {
         if (action === 'Login') {
-          toast.success("Successfully signed in!"); // Show success toast on login
+          localStorage.setItem('token',response.data.token); 
           navigate('/');
         }
-        alert(data.message);
       } else {
-        alert(data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
       console.error("Error during submission:", error);
-      alert("Something went wrong. Please try again.");
+      toast.error("Something went wrong. Please try again.");
     }
   };
 
@@ -99,35 +100,37 @@ const LoginSignup = () => {
               )}
             </div>
 
-            {action === 'Login' && (
-              <div className="forgot-password">
-                Forgot Password? <span>Click Here!</span>
-              </div>
-            )}
+            {action === 'Login' ? (
+             <div className="forgot-password">
+                New User? <span onClick={() => setAction('Sign Up')} style={{ cursor: 'pointer', color: 'blue' }}>Click Here!</span>
+             </div>
+             ) : (
+             <div className="forgot-password">
+                  Already a User? <span onClick={() => setAction('Login')} style={{ cursor: 'pointer', color: 'blue' }}>Click Here!</span>
+                 </div>
+              )}
+                        
+                        <div className="simple-submit-container">
+                             <button
+                              className={action === 'Login' ? 'simple-submit gray' : 'simple-submit'}
+                               type="submit"
+                               >
+                                Sign Up
+                              </button>
 
-            <div className="simple-submit-container">
-              <button
-                className={action === 'Login' ? 'simple-submit gray' : 'simple-submit'}
-                type="button"
-                onClick={() => setAction('Sign Up')}
-              >
-                Sign Up
-              </button>
-              <button
-                className={action === 'Sign Up' ? 'simple-submit gray' : 'simple-submit'}
-                type="button"
-                onClick={() => setAction('Login')}
-              >
-                Log In
-              </button>
-              <button type="submit" className="submit-button">
-                {action}
-              </button>
-            </div>
+                              <button
+                               className={action === 'Sign Up' ? 'simple-submit gray' : 'simple-submit'}
+                               type="submit"
+                              >
+                              Log In
+                               </button>
+  
+                                </div>
+
           </form>
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer />  
     </div>
   );
 };

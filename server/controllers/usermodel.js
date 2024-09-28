@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/usermodel'); 
 const SampleData = require('../models/registrationNumber'); 
 
-const SECRET_KEY = process.env.JWT_SECRET;
-
 const registerUser = async (req, res) => {
   const { name, role, reg_no, dept, year, email, password } = req.body;
   console.log(req.body)
@@ -57,7 +55,7 @@ const loginUser = async (req, res) => {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ email: user.email, reg_no: user.reg_no }, SECRET_KEY, { expiresIn: "1h" });
+    const token = jwt.sign({ email: user.email, reg_no: user.reg_no }, process.env.JWT_SECRET, { expiresIn: "1h" });
     res.status(200).json({ success: true, token, user });
   } catch (error) {
     console.error("Login Error:", error);
