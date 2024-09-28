@@ -116,13 +116,14 @@ html, body {
 
 .user-whole-card {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 25px;
     overflow: hidden;
-    width: calc(280px * 3 + 50px); 
+    width: calc(275px * 3 + 50px);
     position: relative;
     scroll-behavior: smooth;
 }
+
 
 .user-search-card {
     background-color: white;
@@ -216,51 +217,6 @@ html, body {
     display: none;
 }
 
-.carousel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 90%;
-    max-width:9500px; 
-    overflow: hidden;
-    margin: 0 auto; 
-    scroll-behavior: smooth;
-}
-
-
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px; /* Adjust arrow size */
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
-    cursor: pointer;
-    z-index: 10;
-    height: 60px; 
-    width: 60px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-arrow.left {
-    left: -25px;
-    display: none; 
-}
-
-.carousel-arrow.right {
-    right: -25px;
-}
-
-.carousel-arrow:hover {
-    background-color: #f0f0f0;
-}
-
 @media screen and (max-width: 900px) {
     .user-search-card {
         width: 220px;
@@ -284,4 +240,9 @@ html, body {
 
 .nav-btn-right{
     margin-left:20px;
+}
+
+.card-container {
+    overflow: hidden;
+    display: flex;
 }

@@ -79,66 +79,7 @@ const Userpage = () => {
             </>
         );
     };
-
-    useEffect(() => {
-        const card = document.querySelector('.user-search-card');
-        if (card) {
-            setCardWidth(card.offsetWidth);
-        }
-    }, []);
-
-    const handleScrollRight = () => {
-        if (cardContainerRef.current) {
-            const visibleCards = 3;
-            const totalCards = facilityDetails.length;
     
-            if (scrollPosition < (totalCards - visibleCards) * cardWidth) {
-                const newScrollPosition = scrollPosition + cardWidth * visibleCards;
-                cardContainerRef.current.scrollBy({ left: cardWidth * visibleCards, behavior: 'smooth' });
-                setScrollPosition(newScrollPosition);
-    
-                if (newScrollPosition >= (totalCards - visibleCards) * cardWidth) {
-                    const rightArrow = document.querySelector('.nav-btn.right');
-                    if (rightArrow) {
-                        rightArrow.classList.add('disabled');
-                    }
-                }
-    
-                const leftArrow = document.querySelector('.nav-btn.left');
-                if (leftArrow) {
-                    leftArrow.classList.remove('disabled');
-                }
-            }
-        }
-    };
-    
-    const handleScrollLeft = () => {
-        if (cardContainerRef.current && scrollPosition > 0) {
-            const newScrollPosition = scrollPosition - cardWidth * 3;
-            cardContainerRef.current.scrollBy({ left: -cardWidth * 3, behavior: 'smooth' });
-            setScrollPosition(newScrollPosition);
-
-            const leftArrow = document.querySelector('.nav-btn.left');
-            if (newScrollPosition <= 0 && leftArrow) {
-                leftArrow.classList.add('disabled');
-            }
-            const rightArrow = document.querySelector('.nav-btn.right');
-            if (rightArrow) {
-                rightArrow.classList.remove('disabled');
-            }
-        }
-    };
-
-    useEffect(() => {
-        const leftArrow = document.querySelector('.nav-btn.left');
-        if (leftArrow) {
-            leftArrow.classList.toggle('disabled', scrollPosition <= 0);
-        }
-    }, [scrollPosition]);
-
-    
-    
-
     return (
         <div className='user-container'>
             <Navbar/>
