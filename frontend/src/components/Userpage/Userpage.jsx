@@ -22,52 +22,42 @@ const Userpage = () => {
         {
             name: "Nehru Ground",
             type: "Sports Facility",
-            date: "28-09-2024",
-            time: "6:30 PM",
             img: ground,
             rating: 4.5
         },
         {
             name: "Gandhi Stadium",
             type: "Athletics Facility",
-            date: "31-09-2024",
-            time: "7:30 PM",
             img: gandhi,
             rating: 4.4
         },
         {
             name: "Synopsis Lab",
             type: "Lab Facility",
-            date: "02-10-2024",
-            time: "10:30 AM",
             img: lab,
             rating: 4.1
         },
         {
             name: "Lotus Pool",
             type: "Swimming Facility",
-            date: "05-10-2024",
-            time: "8:00 AM",
             img: "lotus-pool.jpg",
             rating: 4.0
         },
         {
             name: "Khan Auditorium",
             type: "Event Facility",
-            date: "07-10-2024",
-            time: "6:00 PM",
             img: "auditorium.jpg",
             rating: 4.0
         },
         {
             name: "Physics Lab",
             type: "Science Facility",
-            date: "09-10-2024",
-            time: "9:30 AM",
             img: "physics-lab.jpg",
             rating: 4.0
         }
     ];
+
+    const [filteredFacilities, setFilteredFacilities]=useState(facilityDetails);
 
     const handleBookFacility = () => {
         console.log(isLoggedIn);
@@ -163,11 +153,22 @@ const Userpage = () => {
             leftArrow.classList.toggle('disabled', scrollPosition <= 0);
         }
     }, [scrollPosition]);
+
+    const handleSearch = (searchTerm) => {
+        if (!searchTerm) {
+            setFilteredFacilities(facilityDetails);
+        } else {
+            const filtered = facilityDetails.filter(facility => 
+                facility.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setFilteredFacilities(filtered);
+        }
+    };
     
     
     return (
         <div className='user-container'>
-            <Navbar/>
+             <Navbar onSearch={handleSearch} />
 
             <div className="user-main">
                 <div className="user-top-bookings">
@@ -203,24 +204,23 @@ const Userpage = () => {
                         </button>
                             
                         <div className="user-whole-card" ref={cardContainerRef}>
-                            {facilityDetails.map((facility, index) => (
-                                <div key={index} className="user-search-card">
-                                    <img src={facility.img} className="search-card-img" alt={facility.name} />
-                                    <div className="user-search-card-details">
-                                        <div className="user-title-rating">
-                                            <p style={{fontSize:"18px"}}>{facility.name}</p>
-                                            <div className="user-rating">
-                                                <span className="user-stars">
-                                                    {generateStars(facility.rating)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <p>Type: {facility.type}</p>
-                                        <button onClick={handleBookFacility}>Book Facility</button>
-                                    </div>
+                        {filteredFacilities.map((facility, index) => (
+                    <div key={index} className="user-search-card">
+                        <img src={facility.img} className="search-card-img" alt={facility.name} />
+                        <div className="user-search-card-details">
+                            <div className="user-title-rating">
+                                <p style={{fontSize:"18px"}}>{facility.name}</p>
+                                <div className="user-rating">
+                                    <span className="user-stars">
+                                        {generateStars(facility.rating)} {/* Assuming this function exists */}
+                                    </span>
                                 </div>
-
-                            ))}
+                            </div>
+                            <p>Type: {facility.type}</p>
+                            <button onClick={() => handleBookFacility(facility)}>Book Facility</button>
+                        </div>
+                    </div>
+                ))}
                             
                         </div>
                         
