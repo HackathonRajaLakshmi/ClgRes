@@ -1,16 +1,23 @@
-.simple-container {
+/* BookingPage.css */
+
+/* Set the entire background of the page */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f8ff; /* Light background color (Alice Blue) */
+  font-family: Arial, sans-serif;
+  height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
   align-items: stretch;
   height: 75vh;
   width: 60%;
   padding: 30px 20px; /* Added padding for better spacing */
   border-radius: 15px; /* Rounded corners for a softer look */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px; /* More pronounced shadow */
   overflow: hidden;
-  position: absolute;
-  top: 100px;
-  left: 50%; /* Centering the container horizontally */
-  transform: translateX(-50%); /* Adjust position to center it */
+  position: relative; /* Enable positioning for the hover effect */
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
@@ -22,42 +29,29 @@
   margin-bottom: 20px;
 }
 
-.title {
-  font-size: 36px; /* Adjust the size as needed */
-  color: #4c00b4; /* Title color, same as your header */
-  margin-top: 20px; /* Space below the title */
-}
-
-h1{
-  text-align: center;
-  color: #4c00b4;
-}
-
-.simple-image-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: 100%; /* Ensure it takes full height */
-}
-
-.simple-image-section img {
-  object-fit: cover; 
-
+.venue-image {
   width: 100%;
-  height: 100%;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: round corners */
 }
 
-.simple-form-section {
-  padding: 40px;
-  background-color: white;
+.venue-name {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #11235A; /* Venue name color */
+}
 
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+.venue-type {
+  font-size: 20px;
+  color: #11235A; /* Venue type color */
+  margin-bottom: 20px;
+}
+
+.input-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: 14px;
-  height: 86%; /* Make sure it fills the available height */
+  gap: 15px; /* Space between input fields */
+  margin-bottom: 20px;
 }
 
 .simple-inputs {
@@ -85,57 +79,22 @@ input{
 
 .simple-inputs input {
   padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #4c00b4;
-  outline: none;
-  width: 100%;
+  border: 1px solid #4c00b4; /* Change border color */
+  border-radius: 4px;
+  width: 95%; /* Full width */
 }
 
-
-.simple-submit-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.simple-submit {
-  width: 48%;
-  padding: 10px;
-  background-color: #4c00b4;
+.book-button {
+  padding: 10px 15px;
+  background-color: rgb(247, 71, 71); /* Red background */
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth transition for button hover */
 }
 
-.simple-submit:hover {
-  background-color: #3c009d;
-}
-
-.gray {
-  background: #eaeaea;
-  color: #676767;
-}
-
-.forgot-password {
-  text-align: center;
-  font-size: 14px;
-  color: #797979;
-  margin-top: 10px;
-}
-
-.forgot-password span {
-  color: #4c00b4;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.book-button:hover {
+  background-color: #218838; /* Darker green on hover */
 }
