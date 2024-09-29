@@ -5,6 +5,7 @@ import LoginSignup from './components/LoginSignup/LoginSignup';
 import { AuthProvider } from './AuthContext'; 
 import BookingPage from './components/BookingPage';
 import Cart from './components/Cart/Cart';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
       <Route path="/bookingpage" element={<BookingPage/>} />
     </Routes>
    </Router>
+   <ToastContainer/>
   </AuthProvider> 
+ 
   )
 }
 

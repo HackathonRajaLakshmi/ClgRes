@@ -130,7 +130,7 @@ const LoginSignup = () => {
           </form>
         </div>
       </div>
-      <ToastContainer />  
+
     </div>
   );
 };

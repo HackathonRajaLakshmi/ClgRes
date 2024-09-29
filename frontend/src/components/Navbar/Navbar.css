@@ -70,112 +70,19 @@
     border-radius: 50%;
 }
 
-.user-profile-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-}
-
-.user-profile-popup h3 {
-    text-align: center;
-}
-
-.user-profile-popup .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: none;
-}
-
-.popup-overlay.show {
-    display: block;
-}
-
-.user-popup-left{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.user-popup-card{
-    display: flex;
-    background: #fafafa;
-    justify-content: space-between;
-    width: 60%;
-    padding: 15px;
-    border-radius: 15px;
-    color: #333;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    margin-bottom: 20px;
-    border: 1px solid #eee;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-size: 14px;
-    margin: auto;
-    margin-top: -10px;
-}
-
-.user-popup-card-img{
-    width:50px;
-    height:50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.user-popup-card-details-1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.whole-bookings-card{
-    border: 1px solid rgb(173, 172, 172);
-    height: 80%;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-}
-
-.user-popup-card-details-2 {
-    margin:auto;
-}
-
-.nav-profile-dropdown {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: #fff2ef;
-    padding: 12px 25px;
-    border-radius: 4px;
-    outline: 2px solid white;
-    list-style: none;
-    right: 0;
-    z-index: 1;
-}
+ .nav-profile-dropdown {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #fff2ef;
+        padding: 12px 25px;
+        border-radius: 4px;
+        outline: 2px solid white;
+        list-style: none;
+        right: 0;
+        z-index: 1;
+    }
 
 .nav-profile-dropdown li {
     display: flex;
@@ -185,10 +92,10 @@
 }
 
 .nav-profile-dropdown img {
-    width: 20%;
+    width: 40%;
 }
 
 
 .navbar-profile {
-    position: relative; /* Ensure dropdown appears relative to the profile icon */
+    position: relative;
 }
