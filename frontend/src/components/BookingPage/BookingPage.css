@@ -1,0 +1,120 @@
+/* General Page Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+  }
+  
+  /* Main Booking Page Grid */
+  .booking-page {
+    
+    display: grid;
+    grid-template-areas:
+        "top-left top-right"
+        "bottom-left bottom-right";
+    /* grid-template-columns: 25% 25%; */
+    grid-template-rows: 50% 50%;
+    /* height: 100vh; */
+    padding-left: 300px;
+    gap: 10px;
+  }
+  
+  /* Top Left Image Section */
+  .top-left {
+    grid-area: top-left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .venue-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 15px;
+    border: 5px solid #11235a;
+    border-radius: 8px;
+  }
+  
+  /* Top Right Details Section */
+  .top-right {
+   grid-area: top-right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #eef5ff;
+    border: 5px solid #11235a;
+    border-radius: 8px;
+    color: #11235a;
+  }
+  .header {
+    font-size: 65px;
+    margin-bottom: 20px;
+    color: red;
+  }
+  
+  .venue-name {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .venue-type {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Bottom Left Form Section */
+  .bottom-left {
+    grid-area: bottom-left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #eef5ff;
+    padding: 20px;
+    border: 5px solid #11235a;
+    border-radius: 8px;
+    color: #11235a;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .input-field {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  /* Book Now Button */
+  .book-button {
+    padding: 10px 15px;
+    background-color: rgb(247, 71, 71);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  /* Bottom Right Section */
+  .bottom-right {
+    grid-area: bottom-right;
+    padding: 20px;
+    background-color: #eef5ff;
+    border: 5px solid #11235a;
+    border-radius: 8px;
+  }
+  

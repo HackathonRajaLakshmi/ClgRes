@@ -43,9 +43,9 @@ const Navbar = () => {
         <div>
             <div className="user-nav">
                 <div className="user-nav-left">
-                    <div className="title" style={{fontSize:"28px", marginTop:"-5px", color:"white"}} >
-                        <i className="fas fa-user-shield"></i> RESX
-                    </div>
+                
+<h2 style={{ color: 'white' }}>ResX</h2>
+
                     <div className="user-search-container">
                         <input type="search" className='user-search' placeholder="Search facilities..." />
                     </div>
