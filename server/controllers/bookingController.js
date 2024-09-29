@@ -106,7 +106,51 @@ const booking = async (req, res) => {
         });
     }
 };
+const ShowCart = async (req, res) => {
+    try {
+        const Data = await bookings.findOne({ email: req.user.email }).exec();
+
+        // Log the data retrieved
+        console.log("Booking Data:", Data);
+
+        if (!Data) {
+            return res.status(404).json({
+                Msg: "No bookings found for this user.",
+            });
+        }
+        if (!Data.booking || Data.booking.length === 0) {
+            return res.status(204).json({
+                Msg: "No bookings available.",
+                retData: [],
+            });
+        }
+
+        const retData = Data.booking.map(data => ({
+            Vname: data.Vname,
+            VType: data.VType,
+            date: data.date,
+            bookingTime: data.bookingTime,
+            endTime: data.endTime,
+            urge: data.urge,
+            score: data.score,
+        }));
+
+        // Log the formatted data
+        console.log("Formatted Booking Data:", retData);
+
+        res.status(200).json({
+            Msg: "Bookings retrieved successfully.",
+            retData,
+        });
+    } catch (err) {
+        console.error("Error fetching bookings:", err);
+        res.status(500).json({
+            Msg: "Server Error",
+            error: err.message,
+        });
+    }
+};
 
 
 
-module.exports = { booking };
+module.exports = { booking,ShowCart};

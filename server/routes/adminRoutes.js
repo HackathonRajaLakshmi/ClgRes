@@ -5,7 +5,7 @@ const adminAuth=require('../middlewares/adminAuth');
 const {VPut,Vget}=require('../controllers/venuecontroller');
 router.post('/admin/login',loginAdmin);
 router.post('/admin/Add',adminAuth,VPut);
-router.get('/admin/getvenue',adminAuth,Vget);   
+router.get('/admin/getvenue',       Vget);   
 router.get('/admin/dashboard',adminAuth, (req, res) => {
     res.json({ message: "This is a protected route!" });
 });
