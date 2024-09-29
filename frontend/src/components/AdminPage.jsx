@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { AppBar, Toolbar, Button, Typography, Container, Paper, Grid, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const VenueForm = () => {
+const AdminPage = () => {
   const [venue, setVenue] = useState({
     Vimage: '',
     Vname: '',
@@ -30,7 +30,7 @@ const VenueForm = () => {
     try {
       const response = await axios.post('http://localhost:3000/api/admin/Add', venue, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}` // Ensure proper string interpolation
         }
       });
 
@@ -50,7 +50,7 @@ const VenueForm = () => {
 
   const handleViewAnalytics = () => {
     toast.info('Redirecting to analytics...');
-    navigate('/Dashboard')
+    navigate('/Dashboard');
   };
 
   return (
@@ -68,8 +68,17 @@ const VenueForm = () => {
           </Button>
         </Toolbar>
       </AppBar>
-      <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', marginTop: '64px' }}>
-        <Paper elevation={3} style={{ padding: '2em', width: '400px' }}>
+      
+      <Container 
+        style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: 'calc(100vh - 64px)', // Adjust height to consider the AppBar
+          marginTop: '64px' 
+        }}
+      >
+        <Paper elevation={3} style={{ padding: '2em', width: '900px',marginLeft:"600px"}}>
           <Typography variant="h5" gutterBottom style={{ textAlign: 'center' }}>
             Add New Venue
           </Typography>
@@ -130,8 +139,13 @@ const VenueForm = () => {
           </form>
         </Paper>
       </Container>
+
+      {/* Footer */}
+      <footer style={{ backgroundColor: '#000', color: '#fff', padding: '1em 0', textAlign: 'center', position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
+        <Typography variant="body1">© 2024 Your Company Name. All Rights Reserved.</Typography>
+      </footer>
     </>
   );
 };
 
-export default VenueForm;
+export default VenueForm;  
