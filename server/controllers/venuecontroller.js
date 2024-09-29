@@ -1,4 +1,5 @@
 const Vdata = require('../models/venueModel');
+
 const VPut = async (req, res) => {
   const { Vimage, Vname, VType, VRating } = req.body;
   try {
@@ -27,6 +28,7 @@ const VPut = async (req, res) => {
     });
   }
 };
+
 const Vget = async (req, res) => {
   const { Vname } = req.body;
   try {

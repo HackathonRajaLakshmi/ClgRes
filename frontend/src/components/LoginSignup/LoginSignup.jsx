@@ -127,7 +127,6 @@ const LoginSignup = () => {
 
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

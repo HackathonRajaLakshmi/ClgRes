@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
 import yourImage from '../../assets/lab.jpg';
 import './BookingPage.css';
+import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from 'react-router-dom';
 
 const BookingPage = () => {
   const [date, setDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [urgency, setUrgency] = useState('');
+  const [role, setRole] = useState(''); 
+  const navigate=useNavigate();
 
-  const handleBooking = () => {
-    if (!date || !startTime || !endTime || !urgency) {
+  const handleBooking = async () => {
+
+    const token = localStorage.getItem('token'); 
+    if (!token) {
+      toast.error('Unauthorized: Please log in to continue.');
+      navigate('/login');
+      return;
+    }
+  
+    if (!date || !startTime || !endTime || !urgency || !role) {
       alert('Please fill out all fields before confirming the booking.');
       return;
     }
@@ -18,9 +32,39 @@ const BookingPage = () => {
       alert('Start time must be before end time.');
       return;
     }
-
-    alert(`Booking confirmed on ${date} from ${startTime} to ${endTime} with urgency: ${urgency}`);
+  
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/api/book',
+        {
+          Vname: "Beautiful Venue",
+          VType: "Event Hall",
+          date: date,
+          bookingTime: startTime,
+          endTime: endTime,
+          urge: urgency,
+          role: role
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+  
+      if (response.status === 200) {
+        toast.success('Booking confirmed!');
+        navigate('/cart');
+      } else {
+        toast.error(`Booking failed: ${response.data.msg}`);
+      }
+    } catch (error) {
+      console.error('Error booking:', error);
+      toast.error('An error occurred during booking. Please try again later.');
+    }
   };
+  
+  
 
   return (
     <div className="booking-page">
@@ -84,6 +128,23 @@ const BookingPage = () => {
                   ))}
                 </div>
               </div>
+
+              <div className="row">
+                <label className="label">Role:</label>
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="input-field"
+                  required
+                >
+                  <option value="" disabled>Select your role</option>
+                  <option value="Staff">Staff</option>
+                  <option value="Pg">Postgraduate</option>
+                  <option value="Ug">Undergraduate</option>
+                </select>
+              </div>
+            
+
             </div>
 
             <button onClick={handleBooking} className="book-button">Book Now</button>

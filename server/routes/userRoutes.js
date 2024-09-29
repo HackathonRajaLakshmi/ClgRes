@@ -8,6 +8,7 @@ router.post('/register', registerUser);
 
 router.post('/login',loginUser);
 router.post('/book',userAuth,booking);
+
 router.get('/bookingpage', userAuth, (req, res) => {
     res.json({ message: "This is a protected route!" });
 });
