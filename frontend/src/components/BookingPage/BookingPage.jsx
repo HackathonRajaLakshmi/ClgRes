@@ -30,11 +30,15 @@ const BookingPage = () => {
         </div>
         <div className="bottom-section">
           <div className="details-container">
-            <h3 className="venue-name">NAME         : Beautiful Venue</h3>
-            <h3 className="venue-type">TYPE         : Event Hall</h3>
+            <div className="details-h3tag">
+              <h3 >NAME         : Beautiful Venue</h3>
+              <h3>TYPE         : Event Hall</h3>
+            </div>
 
             <div className="table">
+
               <div className="row">
+                
                 <label className="label">Date:</label>
                 <input
                   type="date"
@@ -67,7 +71,7 @@ const BookingPage = () => {
               <div className="row">
                 <label className="label">Urgency:</label>
                 <div className="radio-group">
-                  {['High', 'Medium', 'Low'].map((level) => (
+                  {['High', 'Mid', 'Low'].map((level) => (
                     <label key={level} className="radio-label">
                       <input
                         type="radio"
@@ -85,17 +89,18 @@ const BookingPage = () => {
             <button onClick={handleBooking} className="book-button">Book Now</button>
           </div>
 
-          <div className="sep-div"></div> {/* Separator */}
 
           <div className="map-container">
+            <h3>Map</h3>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.783049701283!2d77.05794187508938!3d10.827907989324046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba84ee37569ae7f%3A0x3c5b1824b6e79192!2sSri%20Eshwar%20College%20of%20Engineering%2C%20Coimbatore!5e0!3m2!1sen!2sin!4v1727580417829!5m2!1sen!2sin" 
-              width="78%"
-              height="100%"
+              width="100%"
+              height="70%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              className='map-iframe'
             ></iframe>
           </div>
         </div>

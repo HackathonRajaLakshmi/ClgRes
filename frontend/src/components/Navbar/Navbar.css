@@ -1,5 +1,5 @@
 /* Add this style for the new Home and About buttons */
-.nav-button {
+.user-nav button {
     margin-left: 20px;
     background: transparent;
     font-size: 16px;
@@ -48,7 +48,7 @@
 }
 
 .user-search {
-    width: 500px;
+    width: 800px;
     padding: 10px 15px;
     font-size: 18px;
     border-radius: 25px;

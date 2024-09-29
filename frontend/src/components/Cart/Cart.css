@@ -17,6 +17,11 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     /* margin-top:-40px; */
   }
+
+  .user-nav-cart button{
+    background: rgb(247, 71, 71);
+    color: white;
+  }
   
   .cart-container h2 {
     font-size: 24px;

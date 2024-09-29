@@ -61,9 +61,6 @@ const Navbar = ({ onSearch }) => {
                         />
                     </div>
 
-                    {/* Adding Home and About buttons */}
-                    <button className="nav-button" onClick={() => navigate("/")}>Home</button>
-                    <button className="nav-button" onClick={() => navigate("/about")}>About</button>
                 </div>
 
                 <div className="user-nav-right">
