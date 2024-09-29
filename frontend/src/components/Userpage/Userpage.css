@@ -111,20 +111,14 @@ h1 {
     padding: 25px;
     height: 100%;
     color: #333;
-<<<<<<< HEAD
-    background-color: #EEF5FF;
-    margin-top: -20px;
-    border-radius: 15px; /* Added rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Added shadow */
-=======
     margin-top: -10px;
     /* margin-left: -10px; */
->>>>>>> 25cec3854f0e0aea4270dab19a15f5a6d0d7a626
 }
 
 .user-whole-card {
     display: flex;
     justify-content: flex-start;
+    padding-top: 450px;
     gap: 25px;
     overflow: hidden;
     width: calc(275px * 3 + 50px);
