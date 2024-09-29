@@ -44,7 +44,7 @@ const Navbar = () => {
             <div className="user-nav">
                 <div className="user-nav-left">
                 
-<h2 style={{ color: 'white' }}>ResX</h2>
+                <i class="fas fa-user-shield" style={{color:"white",fontSize:"20px"}}><span style={{marginLeft:"15px",fontSize:"20px"}}>RESX</span> </i> 
 
                     <div className="user-search-container">
                         <input type="search" className='user-search' placeholder="Search facilities..." />
@@ -53,12 +53,12 @@ const Navbar = () => {
                 <div className="user-nav-right">
                     {isLoggedIn && (
                         <div className="user-profile">
-                            <FaUserCircle size={40} color="white" onClick={toggleDropdown}/>
+                            <FaUserCircle size={40} onClick={toggleDropdown}/>
                             
                             {isDropdownOpen && (
                                 <ul className="nav-profile-dropdown">
                                 <li onClick={() => { navigate('/cart'); setIsDropdownOpen(false); }}>
-                                <img src={bag} width={200} height={100}/> Orders
+                                <img src={bag}/> Orders
                                 </li>
                                 </ul>
                                )}

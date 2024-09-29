@@ -108,6 +108,7 @@ input{
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
+  margin: auto;
 }
 
 .simple-submit:hover {

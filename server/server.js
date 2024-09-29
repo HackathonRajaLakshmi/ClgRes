@@ -2,13 +2,14 @@ const express = require('express');
 const app = express();
 const cors=require('cors');
 const dotenv = require('dotenv');
-const RegNo = require('./models/registrationNumber');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
-const mongoose=require("mongoose");
+const adminRoutes=require('./routes/adminRoutes');
+const mongoose = require('mongoose');
+const Admin = require('./models/adminmodel');
+const bcrypt = require('bcrypt');
 
 dotenv.config(); 
-
 
 connectDB(); 
 
@@ -21,7 +22,9 @@ app.use(cors({
     credentials: true
 }));
 
-app.use('/api', userRoutes);
+app.use('/api',userRoutes);
+
+app.use('/api',adminRoutes);
 
 
 app.get('/', (req, res) => {
@@ -31,4 +34,9 @@ const port = 3000;
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
+
+
+
+dotenv.config();
 

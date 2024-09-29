@@ -118,8 +118,11 @@ const LoginSignup = () => {
                 {action === 'Sign Up' ? 'Sign Up' : 'Log In'}
               </button>
             </div>
-
+       
           </form>
+
+          <a href="/adminlogin"  className="sign-in-link">Sign in as Admin</a>
+
         </div>
       </div>
 
