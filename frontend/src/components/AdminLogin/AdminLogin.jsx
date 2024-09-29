@@ -64,7 +64,7 @@ const AdminLogin = () => {
                   placeholder="Password"
                   value={formData.password}
                   onChange={handleChange}
-                  style={{marginBottom:"10px"}}
+                  style={{marginBottom:"10px"}} 
                   required
                 />
               </div>
