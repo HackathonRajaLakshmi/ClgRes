@@ -58,7 +58,7 @@ const Navbar = () => {
                             {isDropdownOpen && (
                                 <ul className="nav-profile-dropdown">
                                 <li onClick={() => { navigate('/cart'); setIsDropdownOpen(false); }}>
-                                <img src={bag}/> Orders
+                                <img src={bag}/> Bookings
                                 </li>
                                 </ul>
                                )}

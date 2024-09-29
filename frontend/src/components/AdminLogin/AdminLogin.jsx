@@ -33,9 +33,9 @@ const AdminLogin = () => {
 
   return (
     <div className="main-container">
-      <div className="title">
+      {/* <div className="title">
         <i className="fas fa-user-shield"></i> RESX
-      </div>
+      </div> */}
 
       <div className="simple-container">
         <div className="simple-image-section">
@@ -56,6 +56,7 @@ const AdminLogin = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  style={{marginBottom:"10px"}}
                 />
                 <input
                   type="password"
@@ -63,6 +64,7 @@ const AdminLogin = () => {
                   placeholder="Password"
                   value={formData.password}
                   onChange={handleChange}
+                  style={{marginBottom:"10px"}}
                   required
                 />
               </div>
