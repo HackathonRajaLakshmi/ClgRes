@@ -1,4 +1,3 @@
-
 html, body {
     height: 100%;
     margin: 0;
@@ -21,6 +20,7 @@ html, body {
     padding-left: 50px;
     align-items: flex-start;
     box-sizing: border-box;
+    overflow: hidden; /* Prevents overflow */
 }
 
 .user-top-bookings {
@@ -30,11 +30,14 @@ html, body {
     height: 100%;
     margin-left: -60px;
     padding: 20px;
-    background: #f7FBFC;
-    }
+    background:#EEF5FF;
+    /* border-radius: 15px; Added rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+}
 
 .user-top-bookings h2 {
     margin-top: -10px;
+    color: #333;
 }
 
 .user-bookings-card {
@@ -50,19 +53,19 @@ html, body {
     margin-bottom: 20px;
     border: 1px solid #eee;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: -10px;
 }
 
 .booking-img {
     border-radius: 50%;
     width: 65px;
-    height: 55%;
+    height: 65px; /* Changed to ensure aspect ratio */
     object-fit: cover;
     margin-top: 8px;
 }
 
 .user-bookings-card:hover {
     transform: scale(1.03);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px; /* Enhanced shadow on hover */
 }
 
 .user-bookings-detail {
@@ -96,12 +99,13 @@ html, body {
     flex-direction: column;
     align-items: center;
     width: 90%;
-    padding:25px;
+    padding: 25px;
     height: 100%;
     color: #333;
-    background-color:#f7FBFC;
+    background-color: #EEF5FF;
     margin-top: -20px;
-    margin-left: -10px;
+    border-radius: 15px; /* Added rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Added shadow */
 }
 
 .user-whole-card {
@@ -117,7 +121,6 @@ html, body {
     border-radius: 15px;
     margin-top: -12px;
 }
-
 
 .user-search-card {
     background-color: white;
@@ -153,7 +156,7 @@ html, body {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left:55px;
+    margin-left: 55px;
 }
 
 .user-search-card-details button:hover {
@@ -171,6 +174,7 @@ html, body {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-radius: 15px 15px 0 0; /* Added rounded corners to image */
 }
 
 .user-search-card p {
@@ -231,9 +235,8 @@ html, body {
     }
 }
 
-
-.nav-btn-right{
-    margin-left:20px;
+.nav-btn-right {
+    margin-left: 20px;
 }
 
 .card-container {

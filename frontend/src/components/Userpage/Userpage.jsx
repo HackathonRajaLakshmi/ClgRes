@@ -155,7 +155,7 @@ const Userpage = () => {
 
             <div className="user-main">
                 <div className="user-top-bookings">
-                    <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Top Bookings</h2>
+                    <h2 style={{ textAlign: "center", marginBottom: "20px",color:"black" }}>Top Bookings</h2>
                     {facilityDetails.sort((a, b) => b.rating - a.rating).slice(0, 3).map((facility, index) => (
                         <div key={index} className="user-bookings-card">
                             <img src={facility.img} className="booking-img" alt={facility.name} />

@@ -1,145 +1,85 @@
-.simple-container {
+/* BookingPage.css */
+
+/* Set the entire background of the page */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f8ff; /* Light background color (Alice Blue) */
+  font-family: Arial, sans-serif;
+  height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: stretch;
-  height: 75vh;
-  width: 60%;
-  background: #f9f9f9; /* Softer background color */
-  padding: 30px 20px; /* Added padding for better spacing */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px; /* More pronounced shadow */
+}
+
+.booking-container {
+  padding: 30px; /* Increased padding for a bigger look */
+  text-align: center;
+  max-width: 500px; /* Increased max-width for a larger container */
+  margin: 0 auto; /* Center with automatic margins */
+  background-color: white; /* Light blue background */
   border-radius: 15px; /* Rounded corners for a softer look */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px; /* More pronounced shadow */
   overflow: hidden;
-  position: absolute;
-  top: 100px;
-  left: 50%; /* Centering the container horizontally */
-  transform: translateX(-50%); /* Adjust position to center it */
+  position: relative; /* Enable positioning for the hover effect */
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
 /* Adding a hover effect for subtle interactivity */
-.simple-container:hover {
+.booking-container:hover {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 15px 40px; /* Enhanced shadow on hover */
-  transform: translateX(-50%) scale(1.02); /* Slightly scale up on hover */
+  transform: scale(1.05); /* Scale up slightly on hover */
 }
 
-.main-container {
-  display: flex;
-  flex-direction: column; /* Stack the title and container vertically */
-  align-items: center; /* Center align title */
-  margin-bottom: 20px; /* Space between title and container */
+.header {
+  font-size: 28px; /* Font size for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+  color: #11235A; /* Heading color */
 }
 
-.title {
-  font-size: 36px; /* Adjust the size as needed */
-  color: #4c00b4; /* Title color, same as your header */
-  margin-top: 20px; /* Space below the title */
-}
-
-h1{
-  text-align: center;
-  color: #4c00b4;
-}
-
-.simple-image-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: 100%; /* Ensure it takes full height */
-}
-
-.simple-image-section img {
-  object-fit: cover; 
-
+.venue-image {
   width: 100%;
-  height: 100%;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: round corners */
 }
 
-.simple-form-section {
-  padding: 40px;
-  background-color: white;
+.venue-name {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #11235A; /* Venue name color */
+}
 
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+.venue-type {
+  font-size: 20px;
+  color: #11235A; /* Venue type color */
+  margin-bottom: 20px;
+}
+
+.input-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: 14px;
-  height: 86%; /* Make sure it fills the available height */
+  gap: 15px; /* Space between input fields */
+  margin-bottom: 20px;
 }
 
-.simple-inputs {
-  display: flex;
-  flex-direction: column; /* Stack inputs vertically for login */
-  gap: 15px; /* Adjust space between inputs */
-  width: 100%;
-}
-
-.log-login-input {
-  display: flex;
-  flex-direction: column; /* Stack inputs vertically */
-  gap: 20px; /* Space between the inputs */
-  width: 400px; /* Ensure it takes full width */
-}
-
-.log-signup-input {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two equal columns for signup */
-  gap: 30px; /* Space between the inputs */
-}
-
-.simple-inputs input {
+.input-field {
   padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #4c00b4;
-  outline: none;
-  width: 100%;
+  border: 1px solid #4c00b4; /* Change border color */
+  border-radius: 4px;
+  width: 95%; /* Full width */
 }
 
-
-.simple-submit-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.simple-submit {
-  width: 48%;
-  padding: 10px;
-  background-color: #4c00b4;
+.book-button {
+  padding: 10px 15px;
+  background-color: rgb(247, 71, 71); /* Red background */
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth transition for button hover */
 }
 
-.simple-submit:hover {
-  background-color: #3c009d;
-}
-
-.gray {
-  background: #eaeaea;
-  color: #676767;
-}
-
-.forgot-password {
-  text-align: center;
-  font-size: 14px;
-  color: #797979;
-  margin-top: 10px;
-}
-
-.forgot-password span {
-  color: #4c00b4;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.book-button:hover {
+  background-color: #218838; /* Darker green on hover */
 }

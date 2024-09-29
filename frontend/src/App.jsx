@@ -1,10 +1,10 @@
 import React from 'react'
-import Userpage from './components/Userpage/Userpage'
+import BookingPage from './components/BookingPage/BookingPage.jsx'
 
 const App = () => {
   return (
     <div>
-      <Userpage/>
+      <BookingPage/>
     </div>
   )
 }
