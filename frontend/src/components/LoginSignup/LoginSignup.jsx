@@ -66,21 +66,26 @@ const LoginSignup = () => {
 
   return (
     <div className="main-container">
-      <div className="title">
-        <i className="fas fa-user-shield"></i> RESX
-      </div>
-
+      
       <div className="simple-container">
         <div className="simple-image-section">
           <img src={loginimg} alt="" />
         </div>
         <div className="simple-form-section">
           <div className="simple-header">
-            <h1>{action}</h1>
-          </div>
+          <h1 style={{ color: '#11235A', fontSize: '24px' }}> {/* Adjust font size as needed */}
+  <span style={{ textDecoration: 'underline', fontSize: '50px' }}>{action}</span>  <span style={{  fontSize: '30px' }}> To</span>
+  <i className="fas fa-user-shield" style={{ color: 'rgb(247, 71, 71)', fontSize: '30px', margin: '0 5px' }}></i> {/* Adjust size */}
+  <span style={{ color: 'rgb(247, 71, 71)', fontSize: '30px' }}>RESX</span> {/* Adjust size */}
+</h1>
 
+
+          </div>
           <form onSubmit={handleSubmit}>
             <div className="simple-inputs">
+            {/* <div className='title-container'>
+        <h1 className="title">REGX</h1>
+        </div> */}
               {action === 'Sign Up' ? (
                 <div className="log-signup-input">
                   <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
@@ -101,31 +106,31 @@ const LoginSignup = () => {
             </div>
 
             {action === 'Login' ? (
-             <div className="forgot-password">
+              <div className="forgot-password">
                 New User? <span onClick={() => setAction('Sign Up')} style={{ cursor: 'pointer', color: 'blue' }}>Click Here!</span>
-             </div>
-             ) : (
-             <div className="forgot-password">
-                  Already a User? <span onClick={() => setAction('Login')} style={{ cursor: 'pointer', color: 'blue' }}>Click Here!</span>
-             </div>
+              </div>
+            ) : (
+              <div className="forgot-password">
+                Already a User? <span onClick={() => setAction('Login')} style={{ cursor: 'pointer', color: 'blue' }}>Click Here!</span>
+              </div>
             )}
-                        
+
             <div className="simple-submit-container">
-              <button
-                className="simple-submit"
-                type="submit"
-              >
+              <button className="simple-submit" type="submit">
                 {action === 'Sign Up' ? 'Sign Up' : 'Log In'}
               </button>
             </div>
+<<<<<<< HEAD
        
+=======
+>>>>>>> 3e279284af2a5e0b16e59ae56a06b8c269a60552
           </form>
 
           <a href="/adminlogin"  className="sign-in-link">Sign in as Admin</a>
 
         </div>
       </div>
-
+      <ToastContainer />
     </div>
   );
 };

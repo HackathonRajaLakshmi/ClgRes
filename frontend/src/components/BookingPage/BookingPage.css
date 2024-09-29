@@ -1,120 +1,134 @@
-/* General Page Styles */
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #f0f8ff;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-  }
-  
-  /* Main Booking Page Grid */
-  .booking-page {
-    
-    display: grid;
-    grid-template-areas:
-        "top-left top-right"
-        "bottom-left bottom-right";
-    /* grid-template-columns: 25% 25%; */
-    grid-template-rows: 50% 50%;
-    /* height: 100vh; */
-    padding-left: 300px;
-    gap: 10px;
-  }
-  
-  /* Top Left Image Section */
-  .top-left {
-    grid-area: top-left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .venue-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    padding: 15px;
-    border: 5px solid #11235a;
-    border-radius: 8px;
-  }
-  
-  /* Top Right Details Section */
-  .top-right {
-   grid-area: top-right;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    background-color: #eef5ff;
-    border: 5px solid #11235a;
-    border-radius: 8px;
-    color: #11235a;
-  }
-  .header {
-    font-size: 65px;
-    margin-bottom: 20px;
-    color: red;
-  }
-  
-  .venue-name {
-    font-size: 24px;
-    margin: 10px 0;
-  }
-  
-  .venue-type {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  
-  /* Bottom Left Form Section */
-  .bottom-left {
-    grid-area: bottom-left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #eef5ff;
-    padding: 20px;
-    border: 5px solid #11235a;
-    border-radius: 8px;
-    color: #11235a;
-  }
-  
-  .input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .input-field {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-  }
-  
-  /* Book Now Button */
-  .book-button {
-    padding: 10px 15px;
-    background-color: rgb(247, 71, 71);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-  }
-  
-  /* Bottom Right Section */
-  .bottom-right {
-    grid-area: bottom-right;
-    padding: 20px;
-    background-color: #eef5ff;
-    border: 5px solid #11235a;
-    border-radius: 8px;
-  }
-  
+.booking-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #EEF5FF;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.top-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background: #000;
+  align-items: center;
+}
+
+.venue-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bottom-section {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #e0e0e0;
+}
+
+.details-container {
+  flex: 1; /* Left half for details */
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 150px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.empty-container {
+  flex: 1; /* Right half for map */
+  display: flex;
+  width: 40%;
+}
+
+.sep-div {
+  background-color: lightgray;
+  width: 2px;
+}
+
+.header, .venue-name, .venue-type {
+  margin: 10px 0;
+  color: #11235A; /* Text color for headers */
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Make input container full width */
+  gap: 15px;
+}
+
+.input-field {
+  width: 100%; /* Full width for input fields */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.book-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgb(247, 71, 71);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-button:hover {
+  background-color: #0056b3;
+}
+
+.bottom-section h3, label {
+  color: #11235A;
+}
+
+.top-section {
+  display: flex;
+  width: 80%;
+  height: 30%;
+}
+
+.input-field {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.book-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgb(247, 71, 71);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-button:hover {
+  background-color: #0056b3;
+}
