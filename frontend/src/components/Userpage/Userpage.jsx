@@ -31,15 +31,26 @@ const Userpage = () => {
         fetchVenues();
     }, []);
 
-    const handleBookFacility = (facility) => {
+    // Calculate card width after venues are fetched
+    useEffect(() => {
+        if (cardContainerRef.current && facilityDetails.length > 0) {
+            const cardWidthValue = cardContainerRef.current.querySelector('.user-search-card').offsetWidth;
+            setCardWidth(cardWidthValue);
+        }
+    }, [facilityDetails]);
 
-        navigate(`/bookingpage/${facility.Vname}`, {
-            state: {
-                Vname: facility.Vname,
-                Vimage: facility.Vimage,
-                VType: facility.VType,
-            },
-        });
+    const handleBookFacility = (facility) => {
+        if(!isLoggedIn){
+            toast.error("Not Signed in");
+        } else {
+            navigate(`/bookingpage/${facility.Vname}`, {
+                state: {
+                    Vname: facility.Vname,
+                    Vimage: facility.Vimage,
+                    VType: facility.VType,
+                },
+            });
+        }
     };
 
     const generateStars = (rating) => {
@@ -62,22 +73,20 @@ const Userpage = () => {
 
     const handleScrollRight = () => {
         if (cardContainerRef.current) {
-            const visibleCards = 3.5;
+            const visibleCards = 3.8; // Assuming 3.5 cards are visible
             const totalCards = facilityDetails.length;
 
             if (scrollPosition < (totalCards - visibleCards) * cardWidth) {
-                const newScrollPosition = scrollPosition + cardWidth * visibleCards;
+                const newScrollPosition = Math.min(scrollPosition + cardWidth * visibleCards, (totalCards - visibleCards) * cardWidth);
                 cardContainerRef.current.scrollBy({ left: cardWidth * visibleCards, behavior: 'smooth' });
                 setScrollPosition(newScrollPosition);
 
-                if (newScrollPosition >= (totalCards - visibleCards) * cardWidth) {
-                    const rightArrow = document.querySelector('.nav-btn.right');
-                    if (rightArrow) {
-                        rightArrow.classList.add('disabled');
-                    }
+                const rightArrow = document.querySelector('.nav-btn-right');
+                if (newScrollPosition >= (totalCards - visibleCards) * cardWidth && rightArrow) {
+                    rightArrow.classList.add('disabled');
                 }
 
-                const leftArrow = document.querySelector('.nav-btn.left');
+                const leftArrow = document.querySelector('.nav-btn-left');
                 if (leftArrow) {
                     leftArrow.classList.remove('disabled');
                 }
@@ -87,16 +96,17 @@ const Userpage = () => {
 
     const handleScrollLeft = () => {
         if (cardContainerRef.current && scrollPosition > 0) {
-            const newScrollPosition = scrollPosition - cardWidth * 3.5;
-            cardContainerRef.current.scrollBy({ left: -cardWidth * 3.5, behavior: 'smooth' });
+            const visibleCards = 3.8;
+            const newScrollPosition = Math.max(scrollPosition - cardWidth * visibleCards, 0);
+            cardContainerRef.current.scrollBy({ left: -cardWidth * visibleCards, behavior: 'smooth' });
             setScrollPosition(newScrollPosition);
 
-            const leftArrow = document.querySelector('.nav-btn.left');
+            const leftArrow = document.querySelector('.nav-btn-left');
             if (newScrollPosition <= 0 && leftArrow) {
                 leftArrow.classList.add('disabled');
             }
 
-            const rightArrow = document.querySelector('.nav-btn.right');
+            const rightArrow = document.querySelector('.nav-btn-right');
             if (rightArrow) {
                 rightArrow.classList.remove('disabled');
             }
@@ -120,7 +130,7 @@ const Userpage = () => {
 
             <div className="user-main">
                 <div className="user-top-bookings">
-                    <h2 style={{ textAlign: "center", marginBottom: "20px",color:"black" }}>Top Bookings</h2>
+                    <h2 style={{ textAlign: "center", marginBottom: "20px", color: "black" }}>Top Bookings</h2>
                     {facilityDetails.sort((a, b) => b.VRating - a.VRating).slice(0, 3).map((facility, index) => (
                         <div key={index} className="user-bookings-card">
                             <img src={facility.Vimage} className="booking-img" alt={facility.Vname} />
@@ -157,18 +167,18 @@ const Userpage = () => {
                                 <img src={facility.Vimage} className="search-card-img" alt={facility.Vname} />
                                 <div className="user-search-card-details">
                                     <div className="user-title-rating">
-                                         <p style={{ fontSize: "18px" }}>{facility.Vname}</p>
-                                         <div className="user-rating">
-                                           <span className="user-stars">
-                        {generateStars(facility.VRating)}
-                    </span>
-                </div>
-            </div>
-            <p>Type: {facility.VType}</p>
-            <button onClick={() => handleBookFacility(facility)}>Book Facility</button>
-        </div>
-    </div>
-))}
+                                        <p style={{ fontSize: "18px" }}>{facility.Vname}</p>
+                                        <div className="user-rating">
+                                            <span className="user-stars">
+                                                {generateStars(facility.VRating)}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p>Type: {facility.VType}</p>
+                                    <button onClick={() => handleBookFacility(facility)}>Book Facility</button>
+                                </div>
+                            </div>
+                        ))}
                         </div>
                         
                         <button 

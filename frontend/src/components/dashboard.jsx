@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className='navbar'>
       <ul>
-        <li><a href="/dashboard">Dashboard</a></li>
+        {/* <li><a href="/dashboard">Dashboard</a></li> */}
         <li><a href="/admin">Admin</a></li>
         {/* <li><a href="/analytics">Analytics</a></li> */}
         <li><a href="/logout">Logout</a></li>
@@ -20,7 +20,7 @@ const Dashboard = () => {
       <Navbar />
       <h1><i className="fas fa-user-shield" style={{ color: 'rgb(247, 71, 71)', fontSize: '30px', margin: '0 5px' }}></i> {/* Adjust size */}
       <span style={{ color: 'rgb(247, 71, 71)', fontSize: '30px' }}>RESX</span> {/* Adjust size */}</h1>
-      <h2>Booking Power BI Report</h2>
+      <h2 className='title-tag'>Booking Power BI Report</h2>
       <iframe 
         title="Booking" 
         width="1440" 

@@ -30,6 +30,7 @@ const Cart = () => {
                 }
             });
             setBookings(response.data.retData); 
+            console.log(response.data);
         } catch (error) {
             console.error('Error fetching bookings:', error);
         } finally {
@@ -68,7 +69,7 @@ const Cart = () => {
                 <div className="bookings-container">
                     <h2>Your Bookings</h2>
                     <div className="cart">
-                        {loading ? ( // Display loading indicator while fetching
+                        {loading ? (
                             <p>Loading bookings...</p>
                         ) : (
                             bookings.length > 0 ? (
@@ -83,12 +84,12 @@ const Cart = () => {
                                             <p><strong>Price</strong></p>
                                          </div>
                                         <div className="user-cart-detail">
-                                           <img src={ground} className="cart-booking-img" alt="Venue" />
+                                           <img src={booking.Vimage} className="cart-booking-img" alt="Venue" />
                                               <p>{booking.Vname}</p>
                                               <p>{booking.VType}</p>
                                               <p>{format(parseISO(booking.date), 'MMMM d, yyyy')}</p>
-                                              <p> {format(parseISO(booking.bookingTime), 'hh:mm a')}</p>
-                                             <p> {format(parseISO(booking.endTime), 'hh:mm a')}</p>
+                                              <p>{format(parseISO(booking.bookingTime), 'hh:mm a')}</p>
+                                             <p>{format(parseISO(booking.endTime), 'hh:mm a')}</p>
                                         </div>
                                     </div>
                                 ))

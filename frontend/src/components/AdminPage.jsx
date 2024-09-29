@@ -55,7 +55,7 @@ const AdminPage = () => {
 
   return (
     <>
-      <AppBar position="fixed" style={{ backgroundColor: '#11235A', width: '100%', top: 0 }}>
+      <AppBar position="fixed" style={{ backgroundColor: '#11235A', width: '100%', top: 0,}}>
         <Toolbar>
           <Typography variant="h6" style={{ flexGrow: 1 }}>
             Admin Dashboard
@@ -70,82 +70,83 @@ const AdminPage = () => {
       </AppBar>
       
       <Container 
-        style={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          height: 'calc(100vh - 64px)', // Adjust height to consider the AppBar
-          marginTop: '64px' 
-        }}
-      >
-        <Paper elevation={3} style={{ padding: '2em', width: '900px',marginLeft:"600px"}}>
-          <Typography variant="h5" gutterBottom style={{ textAlign: 'center' }}>
-            Add New Venue
-          </Typography>
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  label="Venue Image URL"
-                  name="Vimage"
-                  value={venue.Vimage}
-                  onChange={handleChange}
-                  fullWidth
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Venue Name"
-                  name="Vname"
-                  value={venue.Vname}
-                  onChange={handleChange}
-                  fullWidth
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Venue Type"
-                  name="VType"
-                  value={venue.VType}
-                  onChange={handleChange}
-                  fullWidth
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Venue Rating"
-                  name="VRating"
-                  type="number"
-                  value={venue.VRating}
-                  onChange={handleChange}
-                  fullWidth
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  style={{ width: '100%' }}
-                >
-                  Add Venue
-                </Button>
-              </Grid>
-            </Grid>
-          </form>
-        </Paper>
-      </Container>
+  style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    height: 'calc(100vh - 64px)', // Adjust height to account for AppBar
+    marginTop: '64px' // Push down for AppBar
+  }}
+>
+  <Paper elevation={3} style={{ padding: '2em', width: '400px',marginLeft:"400px"}}>
+    <Typography variant="h5" gutterBottom style={{ textAlign: 'center' }}>
+      Add New Venue
+    </Typography>
+    <form onSubmit={handleSubmit}>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <TextField
+            label="Venue Image URL"
+            name="Vimage"
+            value={venue.Vimage}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Venue Name"
+            name="Vname"
+            value={venue.Vname}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Venue Type"
+            name="VType"
+            value={venue.VType}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Venue Rating"
+            name="VRating"
+            type="number"
+            value={venue.VRating}
+            onChange={handleChange}
+            fullWidth
+            required
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            style={{ width: '100%' }}
+          >
+            Add Venue
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
+  </Paper>
+</Container>
+
 
       {/* Footer */}
       <footer style={{ backgroundColor: '#000', color: '#fff', padding: '1em 0', textAlign: 'center', position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
-        <Typography variant="body1">© 2024 Your Company Name. All Rights Reserved.</Typography>
+        <Typography variant="body1">©CopyRight 2024 . All Rights Reserved.</Typography>
       </footer>
     </>
   );
 };
 
-export default VenueForm;  
+export default AdminPage;  

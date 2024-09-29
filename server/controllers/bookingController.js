@@ -24,18 +24,19 @@ const PriorityHandler = (booking) => {
 };
 
 const booking = async (req, res) => {
-    const { Vname, VType, date, bookingTime, endTime, urge, role, score } = req.body;
+    const { Vname, VType, Vimage,date, bookingTime, endTime, urge, role, score } = req.body;
+
+    console.log("Req",req.body);
 
     try {
-        console.log(req.body);
 
         const bookingStartTime = new Date(`${date} ${bookingTime}`);
         const bookingEndTime = new Date(`${date} ${endTime}`);
 
         const newBooking = { 
-            Vimage,
             Vname, 
             VType, 
+            Vimage,
             date,
             bookingTime: bookingStartTime, 
             endTime: bookingEndTime, 
@@ -117,10 +118,6 @@ const booking = async (req, res) => {
 const ShowCart = async (req, res) => {
     try {
         const Data = await bookings.findOne({ email: req.user.email }).exec();
-<<<<<<< HEAD
-
-=======
->>>>>>> 9767b45825e17ca28eec06288ecbbfa08912c7ed
         console.log("Booking Data:", Data);
 
         if (!Data) {
@@ -136,9 +133,9 @@ const ShowCart = async (req, res) => {
         }
 
         const retData = Data.booking.map(data => ({
-            Vimage:data.Vimage,
             Vname: data.Vname,
             VType: data.VType,
+            Vimage:data.Vimage,
             date: data.date,
             bookingTime: data.bookingTime,
             endTime: data.endTime,

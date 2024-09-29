@@ -99,7 +99,7 @@ const LoginSignup = () => {
                 </div>
               ) : (
                 <div className="log-login-input">
-                  <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+                  <input type="email" name="email" placeholder="Email" onChange={handleChange}style={{marginBottom:"-20px"}} required />
                   <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
                 </div>
               )}

@@ -14,6 +14,10 @@ const Bookings=new mongoose.Schema({
         type:String,
         required:true
        },
+       Vimage:{
+        type:String,
+        required:true
+       },
        date:{
         type:Date,
         required:true

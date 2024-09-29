@@ -17,8 +17,10 @@ const BookingPage = () => {
   const navigate=useNavigate();
   const { Vname, Vimage, VType } = location.state || {};
 
-  const handleBooking = async () => {
+  console.log(Vimage);
 
+  const handleBooking = async () => {
+    console.log("Vimage:", Vimage);
     const token = localStorage.getItem('token'); 
     if (!token) {
       toast.error('Unauthorized: Please log in to continue.');
@@ -35,13 +37,13 @@ const BookingPage = () => {
       alert('Start time must be before end time.');
       return;
     }
-  
     try {
       const response = await axios.post(
         'http://localhost:3000/api/book',
         {
-          Vname: "Beautiful Venue",
-          VType: "Event Hall",
+          Vname: Vname,
+          VType: VType,
+          Vimage:Vimage,
           date: date,
           bookingTime: startTime,
           endTime: endTime,
@@ -66,7 +68,7 @@ const BookingPage = () => {
       toast.error('An error occurred during booking. Please try again later.');
     }
   };
-  
+
   
 
   return (
