@@ -123,11 +123,7 @@ const LoginSignup = () => {
           </form>
         </div>
       </div>
-<<<<<<< HEAD
       <ToastContainer />
-=======
-
->>>>>>> d6a6e51072637fc6ba994af90aa4517f4e4b01c4
     </div>
   );
 };

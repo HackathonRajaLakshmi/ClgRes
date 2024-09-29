@@ -3,33 +3,27 @@ import Userpage from './components/Userpage/Userpage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginSignup from './components/LoginSignup/LoginSignup';
 import { AuthProvider } from './AuthContext';
-import BookingPage from './components/BookingPage/BookingPage.jsx';
+import BookingPage from './components/BookingPage/BookingPage';
 import Cart from './components/Cart/Cart';
-<<<<<<< HEAD
-import { ToastContainer } from 'react-toastify';
-=======
 import Dashboard from './components/dashboard';
+import { ToastContainer } from 'react-toastify';
+import AdminLogin from './components/AdminLogin/AdminLogin';
 
 const App = () => {
   return (
 <AuthProvider>
    <Router>
-    <ToastContainer/>
     <Routes>
       <Route path="/" element={<Userpage/>}/>
       <Route path="/login" element={<LoginSignup/>}/>
+      <Route path="/adminlogin" element={<AdminLogin/>}/>
       <Route path="/cart" element={<Cart/>} />
       <Route path="/bookingpage" element={<BookingPage/>} />
       <Route path='/Dashboard' element={<Dashboard/>}/>
     </Routes>
    </Router>
-<<<<<<< HEAD
-   <ToastContainer/>
-  </AuthProvider> 
- 
-=======
+  <ToastContainer/> 
   </AuthProvider>
->>>>>>> 1018e34c3aa9d0906159a076e1dfefae8aa96873
   )
 }
 
