@@ -5,10 +5,17 @@ import lab from "../../assets/lab.jpg";
 import gandhi from "../../assets/school.webp";
 import Navbar from '../Navbar/Navbar';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../../AuthContext';
 
 const Userpage = () => {
+
+    const navigate = useNavigate();
     const [scrollPosition, setScrollPosition] = useState(0);
     const cardContainerRef = useRef(null);
+    const { isLoggedIn, setIsLoggedIn } = useAuth();
     const [cardWidth, setCardWidth] = useState(0); 
 
     const facilityDetails = [
@@ -61,6 +68,15 @@ const Userpage = () => {
             rating: 4.0
         }
     ];
+
+    const handleBookFacility = () => {
+        console.log(isLoggedIn);
+        if (isLoggedIn) {
+            navigate("/bookingpage"); 
+        } else {
+            toast.error("Not signed in");
+        }
+    };
 
     const generateStars = (rating) => {
         const fullStars = Math.floor(rating);
@@ -200,14 +216,14 @@ const Userpage = () => {
                                             </div>
                                         </div>
                                         <p>Type: {facility.type}</p>
-                                        <button>Book Facility</button>
+                                        <button onClick={handleBookFacility}>Book Facility</button>
                                     </div>
                                 </div>
-
 
                             ))}
                             
                         </div>
+                        
                         <button 
                             className={`nav-btn-right ${scrollPosition >= (facilityDetails.length - 3) * cardWidth ? 'disabled' : ''}`} 
                             onClick={handleScrollRight}

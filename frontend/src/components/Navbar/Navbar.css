@@ -167,3 +167,33 @@
 .user-popup-card-details-2 {
     margin:auto;
 }
+
+.nav-profile-dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff2ef;
+    padding: 12px 25px;
+    border-radius: 4px;
+    outline: 2px solid white;
+    list-style: none;
+    right: 0;
+    z-index: 1;
+}
+
+.nav-profile-dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-profile-dropdown img {
+    width: 20%;
+}
+
+
+.navbar-profile {
+    position: relative; /* Ensure dropdown appears relative to the profile icon */
+}
