@@ -121,15 +121,14 @@ const LoginSignup = () => {
               </button>
             </div>
           </form>
+
+          <a href="/adminlogin"  className="sign-in-link">Sign in as Admin</a>
+
         </div>
       </div>
-<<<<<<< HEAD
       <ToastContainer />
-=======
-
->>>>>>> d6a6e51072637fc6ba994af90aa4517f4e4b01c4
     </div>
   );
 };
 
-export default LoginSignup;
+export default LoginSignup;
