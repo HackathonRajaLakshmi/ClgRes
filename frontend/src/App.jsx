@@ -5,7 +5,11 @@ import LoginSignup from './components/LoginSignup/LoginSignup';
 import { AuthProvider } from './AuthContext';
 import BookingPage from './components/BookingPage';
 import Cart from './components/Cart/Cart';
+<<<<<<< HEAD
+import { ToastContainer } from 'react-toastify';
+=======
 import Dashboard from './components/dashboard';
+>>>>>>> 1018e34c3aa9d0906159a076e1dfefae8aa96873
 
 const App = () => {
   return (
@@ -19,7 +23,13 @@ const App = () => {
       <Route path='/Dashboard' element={<Dashboard/>}/>
     </Routes>
    </Router>
+<<<<<<< HEAD
+   <ToastContainer/>
+  </AuthProvider> 
+ 
+=======
   </AuthProvider>
+>>>>>>> 1018e34c3aa9d0906159a076e1dfefae8aa96873
   )
 }
 

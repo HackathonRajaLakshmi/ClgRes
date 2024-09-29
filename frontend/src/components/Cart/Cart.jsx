@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../AuthContext';
+import ground from "../../assets/ground1.jpg";
+import "./Cart.css";
 
 const Cart = () => {
   const { isLoggedIn } = useAuth();
@@ -9,7 +11,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate('/login'); 
+      navigate('/login');
     } else {
       const fetchCartData = async () => {
         try {
@@ -27,8 +29,19 @@ const Cart = () => {
   }, [isLoggedIn, navigate]);
 
   return (
-    <div>
-      <h1>Cart Page</h1>
+    <div className="cart-container">
+      <h2>Your Bookings</h2>
+      <div className="cart">
+        <div className="user-cart-card">
+          <img src={ground} className="cart-booking-img" alt="Venue" />
+          <div className="user-cart-detail">
+            <p><strong>Name:</strong> Nehru Stadium</p>
+            <p><strong>Type:</strong> Sports Facility</p>
+            <p><strong>Date:</strong> 30.09.2024</p>
+            <p><strong>Time:</strong> 6:30 PM</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,54 @@
+.cart-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+  }
+  
+  .cart-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+ .user-cart-card{
+    display: flex;
+    background: #fafafa;
+    justify-content: space-between;
+    width: 40%;
+    padding: 15px;
+    height: 30%;
+    border-radius: 15px;
+    color: #333;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: -10px;
+    margin: auto;
+ }
+
+ .user-cart-detail{
+    font-size: 14px;
+    margin-right: auto;
+    margin-left: 20px;
+    margin-top: -20px;
+ }
+
+  .cart {
+    width: 80%;
+    padding: 15px;
+    height:60%;
+    border-radius: 15px;
+
+  }
+  
+  .cart-booking-img{
+        width:40%;
+        height: 65%;
+        border-radius: 20px;
+  }
+ 
