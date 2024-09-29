@@ -13,7 +13,7 @@ import VenueForm from './components/AdminPage';
 const App = () => {
   return (
 <AuthProvider>
-   <Router>
+  <Router>
     <Routes>
       <Route path="/" element={<Userpage/>}/>
       <Route path="/login" element={<LoginSignup/>}/>
@@ -23,8 +23,8 @@ const App = () => {
       <Route path='/Admin' element={<VenueForm/>}/>
       <Route path='/Dashboard' element={<Dashboard/>}/>
     </Routes>
-   </Router>
-  <ToastContainer/> 
+  </Router>
+  <ToastContainer/>
   </AuthProvider>
   )
 }

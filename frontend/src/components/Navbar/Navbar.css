@@ -1,3 +1,22 @@
+/* Add this style for the new Home and About buttons */
+.nav-button {
+    margin-left: 20px;
+    background: transparent;
+    font-size: 16px;
+    color: white;
+    background: rgb(247, 71, 71);
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: rgb(220, 50, 50);
+}
+
+/* Existing styles */
 .user-nav {
     width: 100%;
     display: flex;
@@ -5,7 +24,6 @@
     padding: 10px;
     height: 70px;
     background: #11235A;
-    /* border-bottom: 1px solid black; */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -14,9 +32,6 @@
     display: flex;
     align-items: center;
     color: #333;
-}
-.user-nav-left.h2{
-    color: white;
 }
 
 .user-nav-right {
@@ -27,24 +42,13 @@
     margin-right: 80px;
 }
 
-.user-nav-right button{
-    background: transparent;
-    font-size: 16px;
-    color:white;
-    background: rgb(247, 71, 71);
-    padding:10px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
 .user-search-container {
     margin-left: 60px;
     flex-grow: 1;
 }
 
 .user-search {
-    width: 800px;
+    width: 500px;
     padding: 10px 15px;
     font-size: 18px;
     border-radius: 25px;
@@ -69,26 +73,20 @@
     border-radius: 10px;
 }
 
-.user-profile img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+.nav-profile-dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #fff2ef;
+    padding: 15px 25px;
+    border-radius: 4px;
+    outline: 2px solid white;
+    list-style: none;
+    right: 0;
+    z-index: 1;
+    width: 100px;
 }
-
- .nav-profile-dropdown {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        background-color: #fff2ef;
-        padding: 15px 25px;
-        border-radius: 4px;
-        outline: 2px solid white;
-        list-style: none;
-        right: 0;
-        z-index: 1;
-        width:100px;
-    }
 
 .nav-profile-dropdown li {
     display: flex;
@@ -100,9 +98,4 @@
 .nav-profile-dropdown img {
     width: 40%;
     height: 40%;
-}
-
-
-.navbar-profile {
-    position: relative;
 }
