@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { AppBar, Toolbar, Button, Typography, Container, Paper, Grid, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const VenueForm = () => {
+const AdminPage = () => {
   const [venue, setVenue] = useState({
     Vimage: '',
     Vname: '',
@@ -30,7 +30,7 @@ const VenueForm = () => {
     try {
       const response = await axios.post('http://localhost:3000/api/admin/Add', venue, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}` // Ensure proper string interpolation
         }
       });
 
@@ -50,7 +50,7 @@ const VenueForm = () => {
 
   const handleViewAnalytics = () => {
     toast.info('Redirecting to analytics...');
-    navigate('/Dashboard')
+    navigate('/Dashboard');
   };
 
   return (
@@ -130,8 +130,9 @@ const VenueForm = () => {
           </form>
         </Paper>
       </Container>
+      <ToastContainer /> {/* Include the ToastContainer to display notifications */}
     </>
   );
 };
 
-export default VenueForm;
+export default AdminPage; // Export the component
