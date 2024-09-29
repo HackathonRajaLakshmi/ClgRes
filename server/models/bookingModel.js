@@ -5,6 +5,7 @@ const Bookings=new mongoose.Schema({
         required:true
     },
     booking:[{
+       
        Vname:{
         type:String,
         required:true

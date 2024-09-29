@@ -33,6 +33,7 @@ const booking = async (req, res) => {
         const bookingEndTime = new Date(`${date} ${endTime}`);
 
         const newBooking = { 
+            Vimage,
             Vname, 
             VType, 
             date,
@@ -115,8 +116,6 @@ const booking = async (req, res) => {
 const ShowCart = async (req, res) => {
     try {
         const Data = await bookings.findOne({ email: req.user.email }).exec();
-
-        // Log the data retrieved
         console.log("Booking Data:", Data);
 
         if (!Data) {
@@ -132,6 +131,7 @@ const ShowCart = async (req, res) => {
         }
 
         const retData = Data.booking.map(data => ({
+            Vimage:data.Vimage,
             Vname: data.Vname,
             VType: data.VType,
             date: data.date,
@@ -140,8 +140,6 @@ const ShowCart = async (req, res) => {
             urge: data.urge,
             score: data.score,
         }));
-
-        // Log the formatted data
         console.log("Formatted Booking Data:", retData);
 
         res.status(200).json({
