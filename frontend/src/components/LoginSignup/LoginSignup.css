@@ -4,9 +4,7 @@
   align-items: stretch;
   height: 75vh;
   width: 60%;
-  background: #f9f9f9; /* Softer background color */
   padding: 30px 20px; /* Added padding for better spacing */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px; /* More pronounced shadow */
   border-radius: 15px; /* Rounded corners for a softer look */
   overflow: hidden;
   position: absolute;
@@ -16,17 +14,12 @@
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
-/* Adding a hover effect for subtle interactivity */
-.simple-container:hover {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 15px 40px; /* Enhanced shadow on hover */
-  transform: translateX(-50%) scale(1.02); /* Slightly scale up on hover */
-}
 
 .main-container {
   display: flex;
-  flex-direction: column; /* Stack the title and container vertically */
+  flex-direction: column; 
   align-items: center; /* Center align title */
-  margin-bottom: 20px; /* Space between title and container */
+  margin-bottom: 20px;
 }
 
 .title {
@@ -73,7 +66,10 @@ h1{
   gap: 15px; /* Adjust space between inputs */
   width: 100%;
 }
-
+input{
+  background-color: white;
+  color: black;
+}
 .log-login-input {
   display: flex;
   flex-direction: column; /* Stack inputs vertically */

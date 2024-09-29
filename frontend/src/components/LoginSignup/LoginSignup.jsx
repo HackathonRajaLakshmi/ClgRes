@@ -107,25 +107,17 @@ const LoginSignup = () => {
              ) : (
              <div className="forgot-password">
                   Already a User? <span onClick={() => setAction('Login')} style={{ cursor: 'pointer', color: 'blue' }}>Click Here!</span>
-                 </div>
-              )}
+             </div>
+            )}
                         
-                        <div className="simple-submit-container">
-                             <button
-                              className={action === 'Login' ? 'simple-submit gray' : 'simple-submit'}
-                               type="submit"
-                               >
-                                Sign Up
-                              </button>
-
-                              <button
-                               className={action === 'Sign Up' ? 'simple-submit gray' : 'simple-submit'}
-                               type="submit"
-                              >
-                              Log In
-                               </button>
-  
-                                </div>
+            <div className="simple-submit-container">
+              <button
+                className="simple-submit"
+                type="submit"
+              >
+                {action === 'Sign Up' ? 'Sign Up' : 'Log In'}
+              </button>
+            </div>
 
           </form>
         </div>
