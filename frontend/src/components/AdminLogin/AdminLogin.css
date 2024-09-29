@@ -1,0 +1,15 @@
+.sign-in-link {
+    font-size: 20px;
+    /* display: inline-block;
+    margin-top: 20px;
+    padding: 10px 5px;
+
+    width: 30%;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease; */
+    gap: 10px;
+  }
+  

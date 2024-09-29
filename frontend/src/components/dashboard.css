@@ -1,0 +1,9 @@
+.Db-dash{
+display: flex;
+padding-left: 200px;
+flex-direction: column;
+background-color: #EEF5FF;
+width: 100%;
+height: 100vh;
+color: #11235A;
+}

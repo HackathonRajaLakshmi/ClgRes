@@ -72,7 +72,7 @@
   display: flex;
   position: relative;
   flex-direction: column; /* Stack inputs vertically for login */
-  gap: 15px; /* Adjust space between inputs */
+  gap: 25px; /* Adjust space between inputs */
   width: 100%;
   top: 20px;
 }
@@ -121,6 +121,7 @@ input {
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
+  margin: auto;
 }
 
 .simple-submit:hover {
@@ -161,3 +162,4 @@ body {
   min-height: 100vh;
   background-color: #EEF5FF;
 }
+

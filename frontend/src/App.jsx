@@ -12,7 +12,7 @@ import AdminLogin from './components/AdminLogin/AdminLogin';
 const App = () => {
   return (
 <AuthProvider>
-   <Router>
+  <Router>
     <Routes>
       <Route path="/" element={<Userpage/>}/>
       <Route path="/login" element={<LoginSignup/>}/>
@@ -21,10 +21,10 @@ const App = () => {
       <Route path="/bookingpage" element={<BookingPage/>} />
       <Route path='/Dashboard' element={<Dashboard/>}/>
     </Routes>
-   </Router>
-  <ToastContainer/> 
+  </Router>
+  <ToastContainer/>
   </AuthProvider>
   )
 }
 
-export default App
+export default App
