@@ -1,5 +1,6 @@
 const bookings = require('../models/bookingModel'); 
 
+
 const PriorityHandler = (booking) => {
     let score = 0;
     
@@ -23,34 +24,39 @@ const PriorityHandler = (booking) => {
 };
 
 const booking = async (req, res) => {
-    const { Vname, VType, date, bookingTime, endTime, urge, role, score } = req.body; 
+    const { Vname, VType, date, bookingTime, endTime, urge, role, score } = req.body;
 
     try {
         console.log(req.body);
-        
+
+        const bookingStartTime = new Date(`${date} ${bookingTime}`);
+        const bookingEndTime = new Date(`${date} ${endTime}`);
+
         const newBooking = { 
             Vname, 
             VType, 
             date,
-            bookingTime, 
-            endTime, 
+            bookingTime: bookingStartTime, 
+            endTime: bookingEndTime, 
             urge, 
             role, 
-            score: req.body.score || PriorityHandler({ role, urge }) 
+            score: req.body.score || PriorityHandler({ role, urge })
         };
+
         const conflictingBooking = await bookings.findOne({
             "booking.VType": VType,  
             $or: [ 
                 { 
-                    "booking.bookingTime": { $lt: endTime }, 
-                    "booking.endTime": { $gt: bookingTime }
+                    "booking.bookingTime": { $lt: bookingEndTime }, 
+                    "booking.endTime": { $gt: bookingStartTime }
                 }
             ]
         });
+
         if (conflictingBooking) {
             const existingBookingIndex = conflictingBooking.booking.findIndex(b => 
                 b.VType === VType &&
-                (new Date(b.bookingTime) < new Date(endTime) && new Date(b.endTime) > new Date(bookingTime))                
+                (new Date(b.bookingTime) < new Date(bookingEndTime) && new Date(b.endTime) > new Date(bookingStartTime))                
             );
 
             if (existingBookingIndex !== -1) {
@@ -97,7 +103,7 @@ const booking = async (req, res) => {
                 savedBookings
             });
         }
-        
+
     } catch (err) {
         console.error("Error in booking:", err);
         res.status(500).json({
