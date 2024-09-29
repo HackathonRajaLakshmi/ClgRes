@@ -1,71 +1,45 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Userpage.css';
-import ground from "../../assets/ground1.jpg";
-import lab from "../../assets/lab.jpg";
-import gandhi from "../../assets/school.webp";
 import Navbar from '../Navbar/Navbar';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../../AuthContext';
+import axios from 'axios';
 
 const Userpage = () => {
-
     const navigate = useNavigate();
     const [scrollPosition, setScrollPosition] = useState(0);
     const cardContainerRef = useRef(null);
-    const { isLoggedIn, setIsLoggedIn } = useAuth();
-    const [cardWidth, setCardWidth] = useState(0); 
+    const { isLoggedIn } = useAuth();
+    const [cardWidth, setCardWidth] = useState(0);
+    const [facilityDetails, setFacilityDetails] = useState([]); 
+    const [filteredFacilities, setFilteredFacilities] = useState([]);
 
-    const facilityDetails = [
-        {
-            name: "Nehru Ground",
-            type: "Sports Facility",
-            img: ground,
-            rating: 4.5
-        },
-        {
-            name: "Gandhi Stadium",
-            type: "Athletics Facility",
-            img: gandhi,
-            rating: 4.4
-        },
-        {
-            name: "Synopsis Lab",
-            type: "Lab Facility",
-            img: lab,
-            rating: 4.1
-        },
-        {
-            name: "Lotus Pool",
-            type: "Swimming Facility",
-            img: "lotus-pool.jpg",
-            rating: 4.0
-        },
-        {
-            name: "Khan Auditorium",
-            type: "Event Facility",
-            img: "auditorium.jpg",
-            rating: 4.0
-        },
-        {
-            name: "Physics Lab",
-            type: "Science Facility",
-            img: "physics-lab.jpg",
-            rating: 4.0
-        }
-    ];
+    useEffect(() => {
+        const fetchVenues = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/getvenue'); 
+                const venues = response.data.Findvenue;
+                setFacilityDetails(venues);
+                setFilteredFacilities(venues);
+            } catch (error) {
+                console.error('Error fetching venues:', error);
+                toast.error('Error fetching venues.');
+            }
+        };
+        fetchVenues();
+    }, []);
 
-    const [filteredFacilities, setFilteredFacilities]=useState(facilityDetails);
+    const handleBookFacility = (facility) => {
 
-    const handleBookFacility = () => {
-        console.log(isLoggedIn);
-        if (isLoggedIn) {
-            navigate("/bookingpage"); 
-        } else {
-            toast.error("Not signed in");
-        }
+        navigate(`/bookingpage/${facility.Vname}`, {
+            state: {
+                Vname: facility.Vname,
+                Vimage: facility.Vimage,
+                VType: facility.VType,
+            },
+        });
     };
 
     const generateStars = (rating) => {
@@ -86,41 +60,23 @@ const Userpage = () => {
         );
     };
 
-    useEffect(() => {
-        const card = document.querySelector('.user-search-card');
-        if (card) {
-            setCardWidth(card.offsetWidth);
-        }
-    }, []);
-    
-    useEffect(() => {
-        const handleResize = () => {
-            const card = document.querySelector('.user-search-card');
-            if (card) {
-                setCardWidth(card.offsetWidth);
-            }
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    
     const handleScrollRight = () => {
         if (cardContainerRef.current) {
             const visibleCards = 3.5;
             const totalCards = facilityDetails.length;
-    
+
             if (scrollPosition < (totalCards - visibleCards) * cardWidth) {
-                const newScrollPosition = scrollPosition + cardWidth * visibleCards; // Move by 3 cards
+                const newScrollPosition = scrollPosition + cardWidth * visibleCards;
                 cardContainerRef.current.scrollBy({ left: cardWidth * visibleCards, behavior: 'smooth' });
                 setScrollPosition(newScrollPosition);
-    
+
                 if (newScrollPosition >= (totalCards - visibleCards) * cardWidth) {
                     const rightArrow = document.querySelector('.nav-btn.right');
                     if (rightArrow) {
                         rightArrow.classList.add('disabled');
                     }
                 }
-                
+
                 const leftArrow = document.querySelector('.nav-btn.left');
                 if (leftArrow) {
                     leftArrow.classList.remove('disabled');
@@ -128,13 +84,13 @@ const Userpage = () => {
             }
         }
     };
-    
+
     const handleScrollLeft = () => {
         if (cardContainerRef.current && scrollPosition > 0) {
             const newScrollPosition = scrollPosition - cardWidth * 3.5;
             cardContainerRef.current.scrollBy({ left: -cardWidth * 3.5, behavior: 'smooth' });
             setScrollPosition(newScrollPosition);
-    
+
             const leftArrow = document.querySelector('.nav-btn.left');
             if (newScrollPosition <= 0 && leftArrow) {
                 leftArrow.classList.add('disabled');
@@ -146,44 +102,36 @@ const Userpage = () => {
             }
         }
     };
-    
-    useEffect(() => {
-        const leftArrow = document.querySelector('.nav-btn.left');
-        if (leftArrow) {
-            leftArrow.classList.toggle('disabled', scrollPosition <= 0);
-        }
-    }, [scrollPosition]);
 
     const handleSearch = (searchTerm) => {
         if (!searchTerm) {
             setFilteredFacilities(facilityDetails);
         } else {
             const filtered = facilityDetails.filter(facility => 
-                facility.name.toLowerCase().includes(searchTerm.toLowerCase())
+                facility.Vname.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setFilteredFacilities(filtered);
         }
     };
-    
-    
+
     return (
         <div className='user-container'>
-             <Navbar onSearch={handleSearch} />
+            <Navbar onSearch={handleSearch} />
 
             <div className="user-main">
                 <div className="user-top-bookings">
                     <h2 style={{ textAlign: "center", marginBottom: "20px",color:"black" }}>Top Bookings</h2>
-                    {facilityDetails.sort((a, b) => b.rating - a.rating).slice(0, 3).map((facility, index) => (
+                    {facilityDetails.sort((a, b) => b.VRating - a.VRating).slice(0, 3).map((facility, index) => (
                         <div key={index} className="user-bookings-card">
-                            <img src={facility.img} className="booking-img" alt={facility.name} />
+                            <img src={facility.Vimage} className="booking-img" alt={facility.Vname} />
                             <div className="user-bookings-detail2">
                                 <div className="user-bookings-detail">
-                                    <p>Name: {facility.name}</p>
-                                    <p>Type: {facility.type}</p>
+                                    <p>Name: {facility.Vname}</p>
+                                    <p>Type: {facility.VType}</p>
                                 </div>
                                 <div className="user-rating">
                                     <span className="user-stars">
-                                        Rating: {generateStars(facility.rating)}
+                                        Rating: {generateStars(facility.VRating)}
                                     </span>
                                 </div>
                             </div>
@@ -205,23 +153,22 @@ const Userpage = () => {
                             
                         <div className="user-whole-card" ref={cardContainerRef}>
                         {filteredFacilities.map((facility, index) => (
-                    <div key={index} className="user-search-card">
-                        <img src={facility.img} className="search-card-img" alt={facility.name} />
-                        <div className="user-search-card-details">
-                            <div className="user-title-rating">
-                                <p style={{fontSize:"18px"}}>{facility.name}</p>
-                                <div className="user-rating">
-                                    <span className="user-stars">
-                                        {generateStars(facility.rating)} {/* Assuming this function exists */}
-                                    </span>
-                                </div>
-                            </div>
-                            <p>Type: {facility.type}</p>
-                            <button onClick={() => handleBookFacility(facility)}>Book Facility</button>
-                        </div>
-                    </div>
-                ))}
-                            
+                            <div key={index} className="user-search-card">
+                                <img src={facility.Vimage} className="search-card-img" alt={facility.Vname} />
+                                <div className="user-search-card-details">
+                                    <div className="user-title-rating">
+                                         <p style={{ fontSize: "18px" }}>{facility.Vname}</p>
+                                         <div className="user-rating">
+                                           <span className="user-stars">
+                        {generateStars(facility.VRating)}
+                    </span>
+                </div>
+            </div>
+            <p>Type: {facility.VType}</p>
+            <button onClick={() => handleBookFacility(facility)}>Book Facility</button>
+        </div>
+    </div>
+))}
                         </div>
                         
                         <button 
@@ -232,7 +179,6 @@ const Userpage = () => {
                         >
                             &gt;
                         </button>
-
                     </div>
                 </div>  
             </div>

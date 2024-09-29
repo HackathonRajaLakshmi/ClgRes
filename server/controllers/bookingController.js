@@ -112,11 +112,11 @@ const booking = async (req, res) => {
         });
     }
 };
+
 const ShowCart = async (req, res) => {
     try {
         const Data = await bookings.findOne({ email: req.user.email }).exec();
 
-        // Log the data retrieved
         console.log("Booking Data:", Data);
 
         if (!Data) {

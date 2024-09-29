@@ -5,14 +5,17 @@ import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const BookingPage = () => {
   const [date, setDate] = useState('');
+  const location = useLocation();
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [urgency, setUrgency] = useState('');
   const [role, setRole] = useState(''); 
   const navigate=useNavigate();
+  const { Vname, Vimage, VType } = location.state || {};
 
   const handleBooking = async () => {
 
@@ -70,13 +73,13 @@ const BookingPage = () => {
     <div className="booking-page">
       <div className="main-container">
         <div className="top-section">
-          <img src={yourImage} alt="Venue" className="venue-image" />
+          <img src={Vimage} alt="Venue" className="venue-image" />
         </div>
         <div className="bottom-section">
           <div className="details-container">
             <div className="details-h3tag">
-              <h3 >NAME         : Beautiful Venue</h3>
-              <h3>TYPE         : Event Hall</h3>
+              <h3 >NAME         : {Vname}</h3>
+              <h3>TYPE         : {VType}</h3>
             </div>
 
             <div className="table">
