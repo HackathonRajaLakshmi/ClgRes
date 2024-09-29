@@ -8,6 +8,7 @@ import Cart from './components/Cart/Cart';
 import Dashboard from './components/dashboard';
 import { ToastContainer } from 'react-toastify';
 import AdminLogin from './components/AdminLogin/AdminLogin';
+import VenueForm from './components/AdminPage';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/adminlogin" element={<AdminLogin/>}/>
       <Route path="/cart" element={<Cart/>} />
       <Route path="/bookingpage" element={<BookingPage/>} />
+      <Route path='/Admin' element={<VenueForm/>}/>
       <Route path='/Dashboard' element={<Dashboard/>}/>
     </Routes>
    </Router>
