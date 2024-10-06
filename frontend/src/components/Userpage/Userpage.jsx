@@ -73,7 +73,7 @@ const Userpage = () => {
 
     const handleScrollRight = () => {
         if (cardContainerRef.current) {
-            const visibleCards = 3.8; // Assuming 3.5 cards are visible
+            const visibleCards = 3.33;
             const totalCards = facilityDetails.length;
 
             if (scrollPosition < (totalCards - visibleCards) * cardWidth) {
@@ -96,7 +96,7 @@ const Userpage = () => {
 
     const handleScrollLeft = () => {
         if (cardContainerRef.current && scrollPosition > 0) {
-            const visibleCards = 3.8;
+            const visibleCards = 3.33;
             const newScrollPosition = Math.max(scrollPosition - cardWidth * visibleCards, 0);
             cardContainerRef.current.scrollBy({ left: -cardWidth * visibleCards, behavior: 'smooth' });
             setScrollPosition(newScrollPosition);
