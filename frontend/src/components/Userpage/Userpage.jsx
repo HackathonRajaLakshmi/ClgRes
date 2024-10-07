@@ -31,7 +31,7 @@ const Userpage = () => {
         fetchVenues();
     }, []);
 
-    // Calculate card width after venues are fetched
+
     useEffect(() => {
         if (cardContainerRef.current && facilityDetails.length > 0) {
             const cardWidthValue = cardContainerRef.current.querySelector('.user-search-card').offsetWidth;
@@ -79,7 +79,7 @@ const Userpage = () => {
             if (scrollPosition < (totalCards - visibleCards) * cardWidth) {
                 const newScrollPosition = Math.min(scrollPosition + cardWidth * visibleCards, (totalCards - visibleCards) * cardWidth);
                 cardContainerRef.current.scrollBy({ left: cardWidth * visibleCards, behavior: 'smooth' });
-                setScrollPosition(newScrollPosition);
+                setScrollPosition(newScrollPosition);   
 
                 const rightArrow = document.querySelector('.nav-btn-right');
                 if (newScrollPosition >= (totalCards - visibleCards) * cardWidth && rightArrow) {

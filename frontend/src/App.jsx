@@ -8,24 +8,27 @@ import Cart from './components/Cart/Cart';
 import Dashboard from './components/dashboard';
 import { ToastContainer } from 'react-toastify';
 import AdminLogin from './components/AdminLogin/AdminLogin';
-import VenueForm from './components/AdminPage';
+import { ScrollProvider } from './ScrollContext';
+import AdminPage from './components/AdminPage';
 
 const App = () => {
   return (
-<AuthProvider>
-  <Router>
-    <Routes>
-      <Route path="/" element={<Userpage/>}/>
-      <Route path="/login" element={<LoginSignup/>}/>
-      <Route path="/adminlogin" element={<AdminLogin/>}/>
-      <Route path="/cart" element={<Cart/>} />
-      <Route path="/bookingpage/:name" element={<BookingPage />} />
-      <Route path='/Admin' element={<VenueForm/>}/>
-      <Route path='/Dashboard' element={<Dashboard/>}/>
-    </Routes>
-  </Router>
-  <ToastContainer/>
-  </AuthProvider>
+    <AuthProvider>
+    <ScrollProvider>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Userpage />} />
+                <Route path="/login" element={<LoginSignup />} />
+                <Route path="/adminlogin" element={<AdminLogin />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/bookingpage/:name" element={<BookingPage />} />
+                <Route path="/admin" element={<AdminPage/>} />
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+        </Router>
+        <ToastContainer />
+    </ScrollProvider>
+</AuthProvider>
   )
 }
 

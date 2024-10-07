@@ -18,7 +18,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(cors({
     origin: 'http://localhost:5173', 
-    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PATCH','PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }));
 

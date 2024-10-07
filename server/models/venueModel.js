@@ -6,7 +6,8 @@ const VenueBookinks=mongoose.Schema({
     },
     Vname:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     VType:{
         type:String,
